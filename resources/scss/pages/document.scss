@@ -1,0 +1,28 @@
+@import "./../bases/common";
+//Plugins
+//Components global
+@import "./../components/breadcrumb";
+@import "./../components/header";
+@import "./../components/menu_main";
+@import "./../components/slider";
+@import "~owl.carousel/dist/assets/owl.carousel.min.css";
+@import "./../customs/custom_owl";
+
+@import "./../components/sidebar_mb";
+@import "./../components/footer";
+@import "./../components/pagination";
+@import "./../components/insights_slide";
+@import "./../components/document";
+@import "~toastr";
+@import "~line-awesome/dist/line-awesome/css/line-awesome.css";
+@import "~font-awesome/css/font-awesome.css";
+#user-product-view {
+    .bot {
+        flex-wrap: wrap;
+        .item {
+            width: 20%;
+            max-width: 20%;
+        }
+    }
+}
+

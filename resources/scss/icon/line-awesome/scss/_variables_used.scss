@@ -1,0 +1,36 @@
+$la-font-path: "/fonts" !default;
+$la-font-size-base: 16px !default;
+$la-line-height-base: 1 !default;
+$la-css-prefix: la !default;
+$la-border-color: #eee !default;
+$la-inverse: #fff !default;
+$la-li-width: (20em / 16) !default;
+$la-font-name: "LineAwesome" !default;
+$la-version: "1.1.";
+
+@function la-content($la-var) {
+    @return unquote("\"#{ $la-var }\"");
+  }
+
+$la-times: \f342;
+$la-home: \f237;
+$la-search: \f2eb;
+$la-plus-circle: \f2c3;
+$la-bars: \f131;
+$la-map-marker: \f27d;
+$la-external-link-square: \f1d3;
+$la-check-circle: \f17c;
+
+$la-angle-down: \f110;
+
+
+
+
+
+
+
+
+
+
+
+

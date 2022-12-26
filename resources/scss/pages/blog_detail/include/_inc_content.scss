@@ -1,0 +1,18 @@
+.post-detail{
+  &__title{
+    font-size: 26px;
+    line-height: 38px;
+    margin-bottom: 5px;
+  }
+  &__intro{
+    font-style: italic;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  &__content{
+    img{
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+}

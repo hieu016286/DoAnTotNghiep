@@ -1,0 +1,25 @@
+.top-header {
+    background-color: #03A9F4;
+    padding: .6rem;
+    position: relative;
+    z-index: 4;
+    .content {
+        display: flex;
+        .left{
+            flex-grow: 1;
+        }
+
+        a {
+            display: inline-block;
+            color: #fff;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+    }
+}
+.top-header.mobile {
+    .left {
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+}

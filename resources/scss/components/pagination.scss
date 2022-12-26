@@ -1,0 +1,20 @@
+.pagination {
+    margin: 10px auto;
+    display: flex;
+    margin-left: 9px;
+    li {
+        padding: 5px;
+        margin: 0 2px;
+        border: 1px solid #dedede;
+        a , span{
+            line-height: 25px;
+            display: block;
+            text-align: center;
+            width: 25px;
+            height: 25px;
+        }
+        &.active {
+            background: #ccc;
+        }
+    }
+}

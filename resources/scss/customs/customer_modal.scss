@@ -1,0 +1,29 @@
+.modal {
+    .header {
+        display: block;
+        border-bottom: 1px solid #dedede;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #666;
+        text-align: left;
+    }
+    .content {
+        padding: 10px 0;
+        a {
+            color: #007bff;
+        }
+        ul {
+            li {
+                i {
+                    color: red;
+                }
+            }
+        }
+    }
+}
+
+#popup-transaction {
+    width: 900px;
+    max-width: 900px;
+    top: 50px;
+}

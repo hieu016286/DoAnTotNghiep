@@ -1,0 +1,14 @@
+@import "./../../bases/common";
+//Plugins
+//Components global
+@import "./../../components/breadcrumb";
+@import "./../../components/header";
+@import "./../../components/menu_main";
+@import "./../../components/sidebar_mb";
+@import "./../../components/footer";
+//Include
+@import "./../../pages/cart/include/inc_cart";
+
+@import "~toastr";
+@import "~line-awesome/dist/line-awesome/css/line-awesome.css";
+@import "~font-awesome/css/font-awesome.css";

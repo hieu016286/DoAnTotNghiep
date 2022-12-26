@@ -1,0 +1,96 @@
+.cart {
+    display: flex;
+    background: #fff;
+    padding: 10px;
+
+    .title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .left {
+        width: 65%;
+        margin-right: 20px;
+        background-color: white;
+        .list {
+            &__title {
+            }
+
+            &__content {
+                border: 1px solid #eee;
+
+                .avatar {
+                    width: 80px;
+                    height: 80px;
+                    display: block;
+                }
+
+                .qty_number {
+                    display: flex;
+
+                    input {
+                        padding: 5px 10px;
+                        width: 100px;
+                        border: 1px solid #f2f2f2;
+                        border-right: 0;
+                    }
+
+                    p {
+                        display: flex;
+                        flex-direction: column;
+
+                        span {
+                            width: 30px;
+                            height: 20px;
+                            border: 1px solid #f2f2f2;
+                            line-height: 20px;
+                            text-align: center;
+                            font-weight: bold;
+
+                            &:first-child {
+                                border-bottom: 0;
+                            }
+                        ;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .btn-action-delete {
+                        font-size: 25px;
+                        border: 1px solid #888;
+                        background: #888;
+                        color: white;
+                        display: inline-block;
+                        margin-left: 10px;
+                        align-items: center;
+                        line-height: 37px;
+                    }
+                }
+            }
+        }
+    }
+
+    .right {
+        flex: 1;
+
+        .customer {
+            &__content {
+
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .cart {
+        flex-direction: column;
+        .left {
+            width: 100%;
+        }
+        .right {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+@import "./../../bases/common";
+//Plugins
+//@import "~animate.css";
+@import "~owl.carousel/dist/assets/owl.carousel.min.css";
+@import "./../../customs/custom_owl";
+//Components global
+@import "./../../components/header";
+@import "./../../components/menu_main";
+@import "./../../components/insights_slide";
+@import "./../../components/product_one";
+@import "./../../components/slider";
+@media (max-width: 767px) {
+    #menu-main {
+        display: none !important;
+    }
+    .component-slide {
+        .left {
+            width: 0 !important;
+        }
+        .right {
+            width: 100% !important;
+        }
+    }
+}
+

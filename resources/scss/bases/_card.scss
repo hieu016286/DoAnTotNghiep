@@ -1,0 +1,64 @@
+.card {
+  padding: 15px;
+  background: #fff;
+  font-size: 14px;
+  &--top {
+    &:not(:first-child) {
+      margin-top: 15px;
+    }
+  }
+  &--bottom {
+    margin-bottom: 15px;
+  }
+  &-header {
+    margin-bottom: 15px;
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #E91E63;
+    }
+    p {
+      color: #999999;
+      font-size: 13px;
+    }
+    .card-title {
+      color: #E91E63;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .normal-title{
+      font-size: 14px;
+      color: #888;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .sub-title {
+      font-size: 13px;
+      line-height: 1.5em;
+      > span {
+        color: #FF0000;
+        font-weight: 600;
+      }
+    }
+
+  }
+  &-body {
+  }
+  &-title{
+    font-size: 16px;
+    font-weight: 600;
+    &--big{
+      font-size: 18px;
+    }
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .card {
+    padding: 10px;
+    border-radius: 0;
+  }
+}

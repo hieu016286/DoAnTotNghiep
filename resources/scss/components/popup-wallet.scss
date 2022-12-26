@@ -1,0 +1,131 @@
+
+//  Popup nạp tiền
+.popup-wallet {
+    max-width: 700px !important;
+    .content {
+        &-header {
+            display: flex;
+            margin-bottom: 10px;
+            .item {
+                font-size: 16px;
+                font-weight: 500;
+                color: #2a477d;
+                border: 1px solid;
+                padding: 5px;
+                border-radius: 6px;
+                &.active {
+                    border-bottom: 1px solid;
+                    color:#E91E63;
+                }
+                margin-right: 15px;
+                //&:first-child{
+                //    margin-right: 0;
+                //}
+                cursor: pointer;
+            }
+        }
+        &-content {
+            .type-atm {
+                max-height: 30vh !important;
+                min-height: 30vh !important;
+                overflow-y: auto !important;
+            }
+            .cardList {
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    text-align: center;
+                    border: 1px solid #dedede;
+                    margin-bottom: 10px;
+                    margin-left: 5px;
+                    label {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        padding: 10px;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .type {
+                display: none;
+                transition: all .4s ease 0s;
+                &.active {
+                    display: block;
+                }
+            }
+
+        }
+
+        .content-content .type-atm::-webkit-scrollbar-track
+        {
+            -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+
+        .content-content .type-atm::-webkit-scrollbar
+        {
+            width: 5px;
+            background-color: #F5F5F5;
+        }
+    }
+
+    i.VISA, i.MASTE, i.AMREX, i.JCB, i.VCB, i.TCB, i.MB, i.VIB, i.ICB, i.EXB, i.ACB, i.HDB, i.MSB, i.NVB, i.DAB, i.SHB, i.OJB, i.SEA, i.TPB, i.PGB, i.BIDV, i.AGB, i.SCB, i.VPB, i.VAB, i.GPB, i.SGB,i.NAB,i.BAB
+    { width:80px; height:30px; display:block; background:url(https://www.nganluong.vn/webskins/skins/nganluong/checkout/version3/images/bank_logo.png) no-repeat;}
+    i.MASTE { background-position:0px -31px}
+    i.AMREX { background-position:0px -62px}
+    i.JCB { background-position:0px -93px;}
+    i.VCB { background-position:0px -124px;}
+    i.TCB { background-position:0px -155px;}
+    i.MB { background-position:0px -186px;}
+    i.VIB { background-position:0px -217px;}
+    i.ICB { background-position:0px -248px;}
+    i.EXB { background-position:0px -279px;}
+    i.ACB { background-position:0px -310px;}
+    i.HDB { background-position:0px -341px;}
+    i.MSB { background-position:0px -372px;}
+    i.NVB { background-position:0px -403px;}
+    i.DAB { background-position:0px -434px;}
+    i.SHB { background-position:0px -465px;}
+    i.OJB { background-position:0px -496px;}
+    i.SEA { background-position:0px -527px;}
+    i.TPB { background-position:0px -558px;}
+    i.PGB { background-position:0px -589px;}
+    i.BIDV { background-position:0px -620px;}
+    i.AGB { background-position:0px -651px;}
+    i.SCB { background-position:0px -682px;}
+    i.VPB { background-position:0px -713px;}
+    i.VAB { background-position:0px -744px;}
+    i.GPB { background-position:0px -775px;}
+    i.SGB { background-position:0px -806px;}
+    i.NAB { background-position:0px -837px;}
+    i.BAB { background-position:0px -868px;}
+}
+
+@media (max-width: 767px) {
+    .popup-wallet {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+        height: 100vh !important;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+        .content-content {
+            .cardList {
+                li {
+                    width: 31%;
+                    label {
+
+                    }
+                }
+            }
+        }
+    }
+    .customer-modal-wallet {
+        padding: 0 !important;
+        z-index: 99999 !important;
+    }
+
+}

@@ -1,0 +1,125 @@
+.product-list {
+    display: flex;
+
+    .left {
+        width: 230px;
+        margin-right: 23px;
+    }
+
+    .right {
+        margin: 15px 0;
+        background: #fff;
+        width: calc(100% - 251px);
+
+        .breadcrumb {
+            padding: 10px;
+            border-bottom: 1px solid #f5f5f5;
+            border-top: 1px solid #f5f5f5;
+        }
+
+        .group {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 5px;
+
+            .product-item {
+                margin: 5px;
+                width: calc(25% - 10px);
+                padding: 10px;
+                //border: 1px solid #f5f5f5;
+            }
+        }
+    }
+}
+
+.filter-tab {
+    padding: 10px;
+    border-bottom: 1px solid #f5f5f5;
+
+    ul {
+        display: flex;
+        overflow-x: auto;
+
+        li {
+            &:not(:last-child) {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+.order-tab {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #1f7aff;
+
+    .total-prod {
+
+    }
+
+    .sort {
+        .item {
+            position: relative;
+            ul {
+                display: none;
+                position: absolute;
+                top: 140%;
+                right: 0;
+                width: 111px;
+                background: white;
+                box-shadow: 0 0 30px rgba(0,0,0,.1);
+                padding: 5px;
+                z-index: 1;
+                a {
+                    &:hover {
+                        color: #d81b60;
+                    }
+                }
+                a.active {
+                    color: #E91E63;
+                }
+
+                &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: -9px;
+                    right: 10px;
+                    width: 20px;
+                    height: 20px;
+                    transform: rotate(-45deg);
+                    background-color: #fff;
+                    border-radius: 3px;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .product-list {
+        .left {
+            display: none;
+        }
+
+        .right {
+            width: 100%;
+
+            .group {
+                .product-item {
+                    width: calc(50% - 10px);
+                }
+            }
+        }
+    }
+    .filter-tab {
+        ul {
+            li {
+                display: inline-block;
+                min-width: 110px;
+            }
+        }
+    }
+}

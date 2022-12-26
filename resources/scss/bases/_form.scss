@@ -1,0 +1,131 @@
+.form-group {
+    margin-bottom: 20px;
+    > label {
+        font-weight: 600;
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        font-size: 14px;
+        color: #333;
+        a {
+            margin: 0 10px;
+        }
+        > span {
+            color: #FF0000
+        }
+        &.count-down {
+            width: 100%;
+            .count-number{
+                float: right;
+                font-weight: 400;
+                color: #888;
+            }
+        }
+    }
+    .form-control {
+        border-radius: 2px;
+        display: block;
+        font-size: 14px;
+        box-sizing: border-box;
+        padding: 8px;
+        height: 38px;
+        width: 100%;
+        background: #fff;
+    }
+    .intro{
+        color: #888;
+        font-style: italic;
+        font-size: 13px;
+    }
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #f2f2f2;
+    opacity: 0.5;
+}
+
+.form-control:focus, input[type=text]:focus, input[type=password]:focus {
+    border: 2px solid #d4d4d4;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    position: relative;
+    margin-right: -5px;
+    margin-left: -5px;
+
+    & > [class*=col] {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .form-col {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+
+        &.city {
+            flex: 1 1 30%;
+            max-width: 30%;
+            margin-right: 10px;
+        }
+
+        &.district {
+            flex: 1 1 70%;
+            max-width: 70%;
+        }
+    }
+}
+
+.error-form {
+    font-size: 13px;
+    color: #FF0000;
+}
+
+//a {
+//    /*color: #fb236a;*/
+//    text-decoration: none;
+//
+//    &:hover {
+//        color: #fb236a;
+//        text-decoration: none;
+//    }
+//}
+
+button, input, textarea {
+    outline: 0;
+}
+
+/* Basic styles for button */
+*:focus, input, button:focus, textarea:focus, input:focus {
+    outline: none !important;
+}
+
+select {
+    height: 38px;
+}
+
+textarea, input, select {
+    border: 2px solid #f2f2f2;
+    font-size: 14px;
+    padding: 10px;
+}
+
+textarea {
+    min-height: 150px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+

@@ -1,0 +1,34 @@
+.product-five {
+  padding: 20px 0 10px 0;
+  .top {
+
+  }
+  .bot {
+    display: flex;
+    .item {
+      .product-item {
+        margin: 0;
+        padding: 10px;
+        .avatar {
+          height: 300px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .product-five {
+    .bot{
+      .item{
+        .product-item{
+          .avatar {
+            height: auto;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.#{$la-css-prefix}-times:before { content: la-content($la-times); }
+.#{$la-css-prefix}-home:before { content: la-content($la-home); }
+.#{$la-css-prefix}-search:before { content: la-content($la-search); }
+.#{$la-css-prefix}-plus-circle:before { content: la-content($la-plus-circle); }
+.#{$la-css-prefix}-bars:before { content: la-content($la-bars); }
+.#{$la-css-prefix}-map-marker:before { content: la-content($la-map-marker); }
+.#{$la-css-prefix}-external-link-square:before { content: la-content($la-external-link-square); }
+.#{$la-css-prefix}-check-circle:before {content: la-content($la-check-circle);}
+.#{$la-css-prefix}-angle-down:before {content: la-content($la-angle-down);}
+

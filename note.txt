@@ -1,0 +1,12 @@
+/var/www/basethesis/public
+/var/www/basethesis/public/
+
++ Đăng nhập admin
+    /admin-auth/login
+
+Tài khoản test VNPay
+Ngân hàng	NCB
+Number	  	9704198526191432198
+Name		NGUYEN VAN A
+Ngày phát hành	07/15
+Password  OTP	123456

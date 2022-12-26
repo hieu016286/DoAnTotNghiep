@@ -1,0 +1,238 @@
+.reviews {
+    max-width: 750px;
+    margin-bottom: 20px;
+    &-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .dashboards {
+        //border: 1px sol;
+        display: flex;
+        box-shadow: 0 5px 20px rgba(0,0,0,.05);
+        align-items: center;
+        padding: 10px;
+        &_sum {
+            flex: 0 0 15%;
+            text-align: center;
+            span {
+                font-size: 35px;
+                color: #fd9727;
+                font-weight: bold;
+                line-height: 30px;
+            }
+        }
+        &_item {
+            flex: 0 0 65%;
+            .item_review {
+                margin: 1px 0;
+                &-name {
+                    display: inline-block;
+                    color: #333;
+                    width: 10%;
+                }
+                &-process {
+                    display: inline-block;
+                    width: 65%;
+                    >div {
+                        height: 7px;
+                        background-color: #e9e9e9;
+                        border-radius: 5px;
+                        span {
+                            border-radius: 5px;
+                            display: inherit;
+                            background: #f57223;
+                            height: 100%;
+                        }
+                    }
+                }
+                &-count {
+                    display: inline-block;
+                    width: 20%;
+                    text-align: right;
+                    color: #288ad6;
+                }
+            }
+        }
+        &_btn {
+            flex: 0 0 20%;
+            a {
+                font-size: 14px;
+                display: block;
+                padding: 5px;
+                color: #fff;
+                background-color: #288ad6;
+                border-radius: 5px;
+                text-align: center;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    .btn-load-rating {
+        padding: 7px 20px;
+        color: #288ad6;
+        border: solid 1px #288ad6;
+        border-radius: 3px;
+        text-align: center;
+        box-sizing: border-box;
+        margin: 10px 0 10px;
+        display: inline-block;
+    }
+
+    .block-reviews {
+        border-top:1px solid #dedede;
+        background-color: white;
+        padding: 10px;
+        display: none;
+        span {
+            i {
+                font-size: 18px;
+                color: #eff0f5;
+            }
+            i.active {
+                color: #f57223;
+            }
+        }
+        #ratings {
+            i {
+                cursor: pointer;
+            }
+        }
+        .reviews-text {
+            display: inline-block;
+            margin-left: 10px;
+            position: relative;
+            background: #52b858;
+            color: #fff;
+            padding: 2px 8px;
+            box-sizing: border-box;
+            font-size: 12px;
+            border-radius: 2px;
+            &:after {
+                right: 100%;
+                top: 50%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                border-color: rgba(82,184,88,0);
+                border-right-color: #52b858;
+                border-width: 6px;
+                margin-top: -6px;
+            }
+        }
+        #rv_content {
+            min-height: 60px;
+            border-radius: 2px;
+            display: block;
+            font-size: 14px;
+            box-sizing: border-box;
+            padding: 8px;
+            height: 38px;
+            width: 100%;
+            background: #fff;
+            border: 2px solid #f2f2f2 !important;
+        }
+
+        button {
+            background-color: #00a65a;
+            border-color: #008d4c;
+            color: white;
+        }
+    }
+
+    &_list {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        padding: 10px;
+        background-color: white;
+        .item {
+            cursor: pointer;
+            padding: 5px;
+            margin: 5px 0;
+            &:hover {
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            &_author {
+                margin-bottom: 5px;
+                span {
+                    &:first-child{
+                        font-weight: bold;
+                    }
+                    &:last-child{
+                        color:#999;
+                    }
+                }
+            }
+            &_success {
+                color: #2ba832 !important;
+                font-size: 13px;
+            }
+            &_review{
+                color: #333;
+                line-height: 18px;
+                i{
+                    color: #eff0f5;
+                }
+                i.active{
+                    color: #faca51;
+                }
+            }
+            &_time {
+                font-size: 13px;
+                i {
+                    color: #999;
+                }
+                color: #999;
+            }
+        }
+    }
+
+    .filter {
+        display: flex;
+        align-items: center;
+        ul {
+            display: flex;
+            li {
+                a {
+                    padding: 4px 5px;
+                    display: inline-block;
+                    color: #288ad6;
+                    &.active {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px)
+{
+    .reviews {
+        .dashboards {
+            display: -webkit-flex; /* Safari */
+            -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+            flex-direction: row;
+            flex-wrap: wrap;
+            &_sum {
+                flex: 0 0 100%;
+            }
+            &_item {
+                flex: 0 0 100%;
+                .item_review {
+                    &-count {
+                        font-size: 11px;
+                    }
+                }
+            }
+            &_btn {
+                flex: 0 0 100%;
+                a {
+                    display: block;
+                }
+            }
+        }
+    }
+}

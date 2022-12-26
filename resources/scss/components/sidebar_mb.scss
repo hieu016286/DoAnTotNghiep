@@ -1,0 +1,22 @@
+.open-sidebar{
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 3px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: .5s all ease-in-out;
+  }
+  &.change{
+    .bar1 {
+      transform: rotate(135deg) translateX(6px) translateY(-6px);
+    }
+
+    .bar2 {
+      opacity: 0;
+    }
+
+    .bar3 {
+      transform: rotate(-135deg) translateX(6px) translateY(6px);
+    }
+  }
+}

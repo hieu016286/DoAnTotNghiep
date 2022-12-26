@@ -1,0 +1,33 @@
+.from_cart_register {
+    .form-group {
+        button {
+            margin: 0 auto;
+            display: block;
+            width: 50%;
+        }
+        hr {
+            margin: 5px 0 10px 0;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #f2f2f2;
+        }
+        p {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn-google {
+            background: #dd4b39;
+            color: white;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .btn-facebook {
+            background: #3B5998;
+            color: white;
+            width: 100%;
+            margin-top: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}

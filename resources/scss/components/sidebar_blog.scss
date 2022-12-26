@@ -1,0 +1,107 @@
+.top-question, .best-sell {
+  margin-bottom: 20px;
+}
+
+.top-question {
+  ul {
+    li {
+      align-items: center;
+      display: flex;
+      padding: 6px 0;
+      span.stt {
+        background: #f4f4f4;
+        color: #cbcbcb;
+        display: inline-block;
+        font-size: 20px;
+        padding: 6px 10px;
+      }
+      a {
+        flex: 1;
+        padding-left: 10px;
+        line-height: 22px;
+      }
+    }
+  }
+}
+
+.best-sell {
+  .content {
+    .item {
+      display: flex;
+      padding: 10px 0;
+      &:not(:last-child) {
+        border-bottom: 1px solid #dcdcdc;
+      }
+      &__avatar {
+        margin-right: 10px;
+        border: 1px solid #dcdcdc;
+        width: 80px;
+        height: 100%;
+        display: inherit;
+      }
+      &__info {
+        .cate {
+          background: #f2f2f2;
+          border-radius: 3px;
+          display: inline-block;
+          padding: 5px 10px;
+          &.sale {
+            color: #ff0000;
+            font-weight: bold;
+          }
+        }
+        .name {
+          display: block;
+          margin: 5px 0 5px 0;
+          font-size: 15px;
+        }
+        .price {
+          .new {
+            color: #ff0000;
+            font-size: 16px;
+          }
+          .old {
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+  }
+}
+
+.blog-top {
+  .top {
+    margin-bottom: 15px;
+    &__avatar {
+      margin-bottom: 5px;
+      width: 100%;
+      height: 160px;
+    }
+    &__title {
+      display: block;
+      font-size: 20px;
+      line-height: 32px;
+    }
+  }
+  .bot {
+    display: flex;
+    flex-flow: wrap row;
+    margin: 0 -10px;
+    .item {
+      width: 50%;
+      padding: 10px;
+      a {
+        height: 120px;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .blog-top {
+    .top {
+      margin-bottom: 5px;
+  }
+  }
+}

@@ -1,0 +1,18 @@
+.alert {
+  padding: 10px;
+  margin: 18px 0;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: $text-error;
+}
+
+.alert-success{
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: $success;
+}
