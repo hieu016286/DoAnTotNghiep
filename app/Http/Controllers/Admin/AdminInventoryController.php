@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\InvoiceEntered;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\Cache;
@@ -18,9 +17,9 @@ class AdminInventoryController extends Controller
 	 */
     public function getWarehousing(Request $request)
 	{
-		$invoiceEntered = InvoiceEntered::with('suppliere','category');
+		$invoiceEntered = InvoiceEntered::with('suppliere', 'category');
         if ($request->time) {
-            $time = $this->getStartEndTime($request->time,[]);
+            $time = $this->getStartEndTime($request->time, []);
             $invoiceEntered->whereBetween('created_at', $time);
         }
 
@@ -44,12 +43,11 @@ class AdminInventoryController extends Controller
 		$inventoryExport = Order::with('product');
 
         if ($request->time) {
-            $time = $this->getStartEndTime($request->time,[]);
+            $time = $this->getStartEndTime($request->time, []);
             $inventoryExport->whereBetween('created_at', $time);
         }
 
-        $inventoryExport = $inventoryExport->orderByDesc('id')
-			->paginate(20);
+        $inventoryExport = $inventoryExport->orderByDesc('id')->paginate(20);
 
 		$viewData = [
 			'inventoryExport' => $inventoryExport,
@@ -69,11 +67,13 @@ class AdminInventoryController extends Controller
 		if ($name = $request->name) $products->where('pro_name', 'like', '%' . $name . '%');
 		if ($category = $request->category) $products->where('pro_category_id', $category);
 
-		$products   = $products->orderByDesc('id')->paginate(10);
-		$categories = Category::all();
-		$viewData   = [
+		$products = $products->orderByDesc('id')->paginate(10);
+        $categories = Category::all();
+        $listCategoriesSort = [];
+        Category::recursive($categories, $parent = 0, $level = 1, $listCategoriesSort);
+		$viewData = [
 			'products'   => $products,
-			'categories' => $categories,
+			'categories' => $listCategoriesSort,
 			'sumNumber'  => $sumNumber,
 			'query'      => $request->query()
 		];
@@ -82,10 +82,9 @@ class AdminInventoryController extends Controller
 	}
 
 
-    public function getStartEndTime($date_range, $config=[])
+    public function getStartEndTime($date_range, $config = [])
     {
         $dates = explode(' - ', $date_range);
-
         $start_date = date('Y-m-d 00:00:00', strtotime($dates[0]));
         $end_date = date('Y-m-d 23:59:59', strtotime($dates[1]));
 

@@ -63,7 +63,7 @@ class RegisterController extends Controller
                 'type'    => 'success',
                 'message' => 'Đăng ký thành công'
             ]);
-            //Mail::to($request->email)->send(new RegisterSuccess($request->name));
+            Mail::to($request->email)->send(new RegisterSuccess($request->name));
             if (\Auth::attempt(['email' => $request->email,'password' => $request->password])) {
                 return redirect()->intended('/');
             }

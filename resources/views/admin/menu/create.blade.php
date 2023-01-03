@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li><a href="{{  route('admin.menu.index') }}"> Menu</a></li>
-            <li class="active"> Thêm mới</a></li>
+            <li class="active"> Thêm mới</li>
         </ol>
     </section>
     <!-- Main content -->

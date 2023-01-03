@@ -46,9 +46,7 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `email`, `password`, `phone`, `log_login`, `class`, `address`, `level`, `avatar`, `created_at`, `updated_at`) VALUES
-(1, 'HALOShop', 'dichvucodethue@gmail.com', '$2y$10$jmipMMs2I0CeSGLgIbyQguEyh1JrYP/66FpG6lKZzlm.Z8C0DkQce', '038456321', NULL, 'DATN', 'TP.HCM', 1, '2022-11-21__a.png', NULL, '2022-10-18 16:26:10'),
-(2, 'Nhân viên', 'nhanvien@gmail.com', '$2y$10$QT0LP7xVitEf69rINhOnq.zjLcKqhNZtPph6lUtzEIQfGpEJb3iY.', '0906383827', NULL, NULL, NULL, 2, NULL, '2020-06-13 06:23:32', '2022-11-23 14:28:32');
+
 
 -- --------------------------------------------------------
 
@@ -650,8 +648,8 @@ CREATE TABLE `supplieres` (
 --
 
 INSERT INTO `supplieres` (`id`, `sl_name`, `sl_phone`, `sl_email`, `sl_address`, `created_at`, `updated_at`) VALUES
-(8, 'HALO', '0384443456', 'HALOSHOP@GMAIL.COM', '123 HUY CẬN HÀ NỘI', '2022-11-23 14:26:27', NULL),
-(9, 'HALO chi nhánh 2', '0384443123', 'HALOSHOP1@GMAIL.COM', '123 HUY CẬN HÀ NỘI', '2022-11-23 14:41:03', '2022-11-23 14:41:27');
+(8, 'HALO chi nhánh 1', '0123456789', 'chinhanhhanoi@GMAIL.COM', 'Xuân Đỉnh - Hà Nội', '2022-11-23 14:26:27', NULL),
+(9, 'HALO chi nhánh 2', '0123456798', 'chinhanhhochiminh@GMAIL.COM', 'Quận 1 - Hồ Chí Minh', '2022-11-23 14:41:03', '2022-11-23 14:41:27');
 
 -- --------------------------------------------------------
 
@@ -670,7 +668,7 @@ CREATE TABLE `transactions` (
   `tst_address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tst_note` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tst_status` tinyint(4) NOT NULL DEFAULT 1,
-  `tst_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT ' 1 thanh toan thuong, 2 la thanh toan online',
+  `tst_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT ' 1 thanh toán thường, 2 thanh toán online',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -680,8 +678,8 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `tst_user_id`, `tst_admin_id`, `tst_total_money`, `tst_name`, `tst_email`, `tst_phone`, `tst_address`, `tst_note`, `tst_status`, `tst_type`, `created_at`, `updated_at`) VALUES
-(27, 23, 1, 142500, 'ĐN dịch vụ code thuê', 'dichvucodethue@gmail.com', '0384443456', '123 ha noi', 'NO', 2, 1, '2022-11-23 14:31:55', '2022-11-23 14:32:10'),
-(28, 23, 1, 237500, 'ĐN dịch vụ code thuê', 'dichvucodethue@gmail.com', '0384443456', '123 ha noi', 'NO', 3, 2, '2022-11-23 14:32:40', '2022-11-23 14:33:44');
+(27, 23, 1, 142500, 'Test Giao Dịch 1', 'testgiaodich1@gmail.com', '0111111111', 'Hà Nội', 'NO', 2, 1, '2022-11-23 14:31:55', '2022-11-23 14:32:10'),
+(28, 23, 1, 237500, 'Test Giao Dịch 2', 'testgiaodich2@gmail.com', '0222222222', 'Hồ Chí Minh', 'NO', 3, 2, '2022-11-23 14:32:40', '2022-11-23 14:33:44');
 
 -- --------------------------------------------------------
 
@@ -711,7 +709,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `log_login`, `count_comment`, `address`, `avatar`, `remember_token`, `created_at`, `updated_at`, `google_id`) VALUES
-(23, 'ĐN dịch vụ code thuê', 'dichvucodethue@gmail.com', '2021-05-19 14:38:54', NULL, NULL, NULL, 1, NULL, NULL, NULL, '2022-11-21 01:55:19', '2022-11-21 01:55:19', '102842857868709120320');
+(23, 'Người dùng 1', 'user1@gmail.com', '2021-05-19 14:38:54', NULL, NULL, NULL, 1, NULL, NULL, NULL, '2022-11-21 01:55:19', '2022-11-21 01:55:19', '102842857868709120320');
 
 -- --------------------------------------------------------
 

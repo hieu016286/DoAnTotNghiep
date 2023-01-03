@@ -21,7 +21,10 @@
                         <select name="category" class="form-control" >
                             <option value="0">Danh mục</option>
                             @foreach($categories as $item)
-                                <option value="{{ $item->id }}" {{ Request::get('category') == $item->id ? "selected='selected'" : "" }}>{{  $item->c_name }}</option>
+                                <option value="{{ $item->id }}" {{ Request::get('category') == $item->id ? "selected='selected'" : "" }}>
+                                        <?php $str = '' ;for($i = 0; $i < $item->level; $i ++){ echo $str; $str .= '-- '; }?>
+                                    {{ $item->c_name }}
+                                </option>
                             @endforeach
                         </select>
 

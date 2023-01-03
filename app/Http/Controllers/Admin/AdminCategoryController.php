@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\AdminRequestCategory;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -13,10 +12,7 @@ class AdminCategoryController extends AdminController
     public function index()
     {
         $categories = Category::paginate(10);
-
-        $viewData = [
-            'categories' => $categories
-        ];
+        $viewData = ['categories' => $categories];
 
         return view('admin.category.index', $viewData);
     }
@@ -24,13 +20,14 @@ class AdminCategoryController extends AdminController
     public function create()
     {
         $categories = $this->getCategoriesSort();
+
         return view('admin.category.create',compact('categories'));
     }
 
     public function store(AdminRequestCategory $request)
     {
-        $data               = $request->except('_token','c_avatar');
-        $data['c_slug']     = Str::slug($request->c_name);
+        $data = $request->except('_token','c_avatar');
+        $data['c_slug'] = Str::slug($request->c_name);
         $data['created_at'] = Carbon::now();
         if ($request->c_avatar) {
             $image = upload_image('c_avatar');
@@ -38,31 +35,35 @@ class AdminCategoryController extends AdminController
                 $data['c_avatar'] = $image['name'];
         }
 
-        $id = Category::insertGetId($data);
-        return redirect()->back()->with('success', 'Thêm hành công dữ liệu');
+        Category::insertGetId($data);
+
+        return redirect()->back()->with('success', 'Thêm thành công dữ liệu');
     }
 
     public function edit($id)
     {
         $category = Category::find($id);
         $categories = $this->getCategoriesSort();
+
         return view('admin.category.update', compact('category','categories'));
     }
 
     public function update(AdminRequestCategory $request, $id)
     {
-        $category           = Category::find($id);
-        $data               = $request->except('_token','c_avatar');
-        $data['c_slug']     = Str::slug($request->c_name);
+        $category = Category::find($id);
+        $data = $request->except('_token','c_avatar');
+        $data['c_slug'] = Str::slug($request->c_name);
         $data['updated_at'] = Carbon::now();
 
         if ($request->c_avatar) {
+            if(check_image($category->c_avatar))
+                remove_image($category->c_avatar);
             $image = upload_image('c_avatar');
             if ($image['code'] == 1)
                 $data['c_avatar'] = $image['name'];
         }
-
         $category->update($data);
+
         return redirect()->back()->with('success', 'Chỉnh sửa thành công dữ liệu');
     }
 
@@ -87,8 +88,11 @@ class AdminCategoryController extends AdminController
     public function delete($id)
     {
         $category = Category::find($id);
-        if ($category) $category->delete();
-
+        if ($category) {
+            if(check_image($category->c_avatar))
+                remove_image($category->c_avatar);
+            $category->delete();
+        }
         return redirect()->back();
     }
 

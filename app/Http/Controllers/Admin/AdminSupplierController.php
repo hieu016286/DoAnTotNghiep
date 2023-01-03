@@ -3,21 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminRequestAccount;
-use App\Models\Admin;
 use App\Models\Supplier;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class AdminSupplierController extends Controller
 {
 	public function index()
 	{
 		$supplieres = Supplier::get();
-		$viewData = [
-			'supplieres' => $supplieres
-		];
+		$viewData = ['supplieres' => $supplieres];
+
 		return view('admin.supplier.index', $viewData);
 	}
 
@@ -30,9 +26,9 @@ class AdminSupplierController extends Controller
 	{
 		$data = $request->except("_token");
 		$data['created_at'] = Carbon::now();
-		$supplier = Supplier::insert($data);
+		Supplier::insert($data);
 
-		return redirect()->back()->with('success', 'Thêm hành công dữ liệu');
+		return redirect()->back()->with('success', 'Thêm thành công dữ liệu');
 	}
 
 	public function edit($id)

@@ -62,12 +62,13 @@
                 </div>
 
                 <div class="form-group ">
-                    <label class="control-label">Danh mục <b class="col-red">(*)</b></label>
+                    <label class="control-label">Danh mục <b class="col-red" style="color: red">(*)</b></label>
                     <select name="pro_category_id" class="form-control ">
                         <option value="">__Click__</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ ($product->pro_category_id ?? '') == $category->id ? "selected='selected'" : "" }}>
-                                {{  $category->c_name }}
+                                    <?php $str = '' ;for($i = 0; $i < $category->level; $i ++){ echo $str; $str .= '-- '; }?>
+                                {{ $category->c_name }}
                             </option>
                         @endforeach
                     </select>
