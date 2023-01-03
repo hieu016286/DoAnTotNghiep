@@ -10,6 +10,8 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Exports\TransactionExport;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminTransactionController extends Controller
 {
@@ -18,15 +20,14 @@ class AdminTransactionController extends Controller
         $transactions = Transaction::whereRaw(1);
 
         if ($request->id) $transactions->where('id',$request->id);
-        if ($email = $request->email) {
+        if ($email = $request->email)
             $transactions->where('tst_email','like','%'.$email.'%');
-        }
 
         if ($type = $request->type) {
             if ($type == 1)
             {
                 $transactions->where('tst_user_id','<>',0);
-            }else {
+            } else {
                 $transactions->where('tst_user_id',0);
             }
         }
@@ -35,18 +36,16 @@ class AdminTransactionController extends Controller
             $transactions->where('tst_status',$status);
         }
 
-        $transactions = $transactions->orderByDesc('id')
-                            ->paginate(10);
+        $transactions = $transactions->orderByDesc('id')->paginate(10);
         if ($request->export) {
-            // Gọi thới export excel 
-            return \Excel::download(new TransactionExport($transactions), 'don-hang.xlsx');
+            // Export excel
+            return Excel::download(new TransactionExport($transactions), 'don-hang.xlsx');
         }
 
         $viewData = [
             'transactions' => $transactions,
-            'query'        => $request->query()
+            'query' => $request->query()
         ];
-
         return view('admin.transaction.index', $viewData);
     }
 
@@ -54,9 +53,7 @@ class AdminTransactionController extends Controller
     {
 
         if ($request->ajax()) {
-            $orders = Order::with('product:id,pro_name,pro_slug,pro_avatar')->where('od_transaction_id', $id)
-                ->get();
-
+            $orders = Order::with('product:id,pro_name,pro_slug,pro_avatar')->where('od_transaction_id', $id)->get();
             $html = view("components.orders", compact('orders'))->render();
             
             return response([
@@ -71,10 +68,7 @@ class AdminTransactionController extends Controller
             $order = Order::find($id);
             if ($order) {
                 $money = $order->od_qty * $order->od_price;
-                //
-                \DB::table('transactions')
-                    ->where('id', $order->od_transaction_id)
-                    ->decrement('tst_total_money', $money);
+                DB::table('transactions')->where('id', $order->od_transaction_id)->decrement('tst_total_money', $money);
                 $order->delete();
             }
 
@@ -89,8 +83,7 @@ class AdminTransactionController extends Controller
         $transaction = Transaction::find($id);
         if ($transaction) {
             $transaction->delete();
-            \DB::table('orders')->where('od_transaction_id', $id)
-                ->delete();
+            DB::table('orders')->where('od_transaction_id', $id)->delete();
         }
 
         return redirect()->back();
@@ -134,9 +127,7 @@ class AdminTransactionController extends Controller
 			foreach ($orders as $order)
 			{
 				Cache::forget('PRODUCT_DETAIL_'. $order->od_product_id);
-				\DB::table('products')
-					->where('id', $order->od_product_id)
-					->decrement("pro_number",$order->od_qty);
+				DB::table('products')->where('id', $order->od_product_id)->decrement("pro_number",$order->od_qty);
 				$this->synImportGoods($order->od_product_id, $order->od_qty);
 			}
 		}

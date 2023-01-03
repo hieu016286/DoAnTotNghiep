@@ -2,9 +2,12 @@
 
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use function foo\func;
 
-if (!function_exists('upload_image')) {
+if (!function_exists('upload_image'))
+{
     /**
      * @param $file [tên file trùng tên input]
      * @param array $extend [ định dạng file có thể upload được]
@@ -13,41 +16,41 @@ if (!function_exists('upload_image')) {
     function upload_image($file, $folder = '', array $extend = array())
     {
         $code = 1;
-        // lay duong dan anh
+        // Lấy đường dẫn ảnh
         $baseFilename = public_path() . '/uploads/' . $_FILES[$file]['name'];
 
-        // thong tin file
+        // Thông tin ảnh
         $info = new SplFileInfo($baseFilename);
 
-        // duoi file
+        // Lấy đuôi ảnh
         $ext = strtolower($info->getExtension());
 
-        // kiem tra dinh dang file
+        // Kiểm tra định dạng ảnh
         if (!$extend)
             $extend = ['png', 'jpg', 'jpeg', 'webp'];
 
         if (!in_array($ext, $extend))
             return $data['code'] = 0;
 
-        // Tên file mới
+        // Tên file ảnh mới
         $nameFile = trim(str_replace('.' . $ext, '', strtolower($info->getFilename())));
         $filename = date('Y-m-d__') . \Illuminate\Support\Str::slug($nameFile) . '.' . $ext;;
 
-        // thu muc goc de upload
+        // Thư mục upload ảnh
         $path = public_path() . '/uploads/' . date('Y/m/d/');
         if ($folder)
             $path = public_path() . '/uploads/' . $folder . '/' . date('Y/m/d/');
 
-        if (!\File::exists($path))
+        if (!File::exists($path))
             mkdir($path, 0777, true);
 
-        // di chuyen file vao thu muc uploads
+        // Di chuyển ảnh vào thư mục upload
         move_uploaded_file($_FILES[$file]['tmp_name'], $path . $filename);
 
         $data = [
-            'name'     => $filename,
-            'code'     => $code,
-            'path'     => $path,
+            'name' => $filename,
+            'code' => $code,
+            'path' => $path,
             'path_img' => 'uploads/' . $filename
         ];
 
@@ -55,7 +58,26 @@ if (!function_exists('upload_image')) {
     }
 }
 
-if (!function_exists('get_client_ip')) {
+if (!function_exists('check_image'))
+{
+    function check_image($fileName)
+    {
+        $path = public_path() . '/uploads/' . date('Y/m/d/');
+        return File::exists($path . $fileName);
+    }
+}
+
+if (!function_exists('remove_image'))
+{
+    function remove_image($fileName)
+    {
+        $path = public_path() . '/uploads/' . date('Y/m/d/');
+        return File::delete($path . $fileName);
+    }
+}
+
+if (!function_exists('get_client_ip'))
+{
     function get_client_ip()
     {
         $ipaddress = '';
@@ -79,7 +101,8 @@ if (!function_exists('get_client_ip')) {
 }
 
 
-if (!function_exists('pare_url_file')) {
+if (!function_exists('pare_url_file'))
+{
     function pare_url_file($image, $folder = '')
     {
         if (!$image) {
@@ -94,7 +117,8 @@ if (!function_exists('pare_url_file')) {
     }
 }
 
-if (!function_exists('device_agent')) {
+if (!function_exists('device_agent'))
+{
     function device_agent()
     {
         $agent = new Jenssegers\Agent\Agent();
@@ -109,7 +133,8 @@ if (!function_exists('device_agent')) {
     }
 }
 
-if (!function_exists('number_price')) {
+if (!function_exists('number_price'))
+{
     function number_price($price, $sale = 0)
     {
         if ($sale == 0) {
@@ -122,14 +147,16 @@ if (!function_exists('number_price')) {
     }
 }
 
-if (!function_exists('get_data_user')) {
+if (!function_exists('get_data_user'))
+{
     function get_data_user($type, $field = 'id')
     {
         return Auth::guard($type)->user() ? Auth::guard($type)->user()->$field : '';
     }
 }
 
-if (!function_exists('get_name_short')) {
+if (!function_exists('get_name_short'))
+{
     function get_name_short($name)
     {
         if ($name == '') return "[N\A]";
@@ -186,6 +213,6 @@ if (!function_exists('check_admin'))
 {
 	function check_admin()
 	{
-		return get_data_user('admins','level') == 1 ? true : false;
+		return get_data_user('admins','level') == 1;
 	}
 }

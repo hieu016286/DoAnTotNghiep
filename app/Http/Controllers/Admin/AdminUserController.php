@@ -12,10 +12,7 @@ class AdminUserController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-
-        $viewData = [
-            'users' => $users
-        ];
+        $viewData = ['users' => $users];
 
         return view('admin.user.index', $viewData);
     }
@@ -24,13 +21,8 @@ class AdminUserController extends Controller
 	{
 		if ($request->ajax())
 		{
-			$transactions = Transaction::where([
-				'tst_user_id' => $id,
-			])->whereIn('tst_status',[1,2])
-				->orderByDesc('id')
-				->paginate(10);
-
-			$view = view('admin.user.transaction', compact('transactions'))->render();
+			$transactions = Transaction::where(['tst_user_id' => $id,])->whereIn('tst_status',[1,2])->orderByDesc('id')->paginate(10);
+            $view = view('admin.user.transaction', compact('transactions'))->render();
 
 			return response()->json(['html' => $view]);
 		}

@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="{{  route('admin.menu.index') }}"> Menu</a></li>
-            <li class="active"> Update</a></li>
+            <li class="active"> Update</li>
         </ol>
     </section>
     <!-- Main content -->

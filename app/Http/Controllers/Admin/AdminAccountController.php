@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Http\Requests\AdminRequestAccount;
 use Carbon\Carbon;
@@ -15,9 +14,8 @@ class AdminAccountController extends Controller
     {
 		if (!check_admin()) return redirect()->route('get.admin.index');
         $admins = Admin::get();
-        $viewData = [
-            'admins' => $admins
-        ];
+        $viewData = ['admins' => $admins];
+
         return view('admin.admin.index', $viewData);
     }
 
@@ -29,11 +27,11 @@ class AdminAccountController extends Controller
     public function store(AdminRequestAccount $request)
     {
         $data = $request->except("_token");
-        $data['password']   =  Hash::make($data['password']);
+        $data['password'] = Hash::make($data['password']);
         $data['created_at'] = Carbon::now();
-        $admin = Admin::insert($data);
+        Admin::insert($data);
 
-        return redirect()->back()->with('success', 'Thêm hành công dữ liệu');
+        return redirect()->back()->with('success', 'Thêm thành công dữ liệu');
     }
 
     public function edit($id)

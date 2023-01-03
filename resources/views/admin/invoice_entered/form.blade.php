@@ -24,7 +24,7 @@
 						<option value="{{ $item->id }}" {{ ($invoiceEntered->ie_product_id ?? 0) ==  $item->id ? "selected='selected'" : "" }}>Name : {{ $item->pro_name }}
 							- Giá : {{ number_format($item->pro_price,0,',','.') }}
 							- Số lượng : {{ $item->pro_number }}
-							- Tổn tiền : {{ number_format($item->pro_price * $item->pro_number,0,',','.') }}
+							- Tổng tiền : {{ number_format($item->pro_price * $item->pro_number,0,',','.') }}
 						</option>
 						@endforeach
 					</select>
@@ -70,7 +70,7 @@
 						<option value="{{ $item->id }}" {{ ($invoiceEntered->ie_product_id ?? 0) ==  $item->id ? "selected='selected'" : "" }}>Name : {{ $item->pro_name }}
 							- Giá : {{ number_format($item->pro_price,0,',','.') }}
 							- Số lượng : {{ $item->pro_number }}
-							- Tổn tiền : {{ number_format($item->pro_price * $item->pro_number,0,',','.') }}
+							- Tổng tiền : {{ number_format($item->pro_price * $item->pro_number,0,',','.') }}
 						</option>
 						@endforeach
 					</select>
@@ -115,7 +115,7 @@
 						<option value="{{ $item->id }}" {{ ($invoiceEntered->ie_product_id ?? 0) ==  $item->id ? "selected='selected'" : "" }}>Name : {{ $item->pro_name }}
 							- Giá : {{ number_format($item->pro_price,0,',','.') }}
 							- Số lượng : {{ $item->pro_number }}
-							- Tổn tiền : {{ number_format($item->pro_price * $item->pro_number,0,',','.') }}
+							- Tổng tiền : {{ number_format($item->pro_price * $item->pro_number,0,',','.') }}
 						</option>
 						@endforeach
 					</select>

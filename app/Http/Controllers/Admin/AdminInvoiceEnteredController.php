@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\InvoiceEntered;
 use App\Models\Menu;
 use App\Models\Product;
@@ -11,18 +10,13 @@ use App\Models\Import_histories;
 use App\Models\Supplier;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use SebastianBergmann\Environment\Console;
 
 class AdminInvoiceEnteredController extends Controller
 {
     public function index()
     {
-        $invoiceEntered = InvoiceEntered::with('suppliere','product')->orderByDesc('id')
-            ->paginate(10);
-
-        $viewData = [
-            'invoiceEntered' => $invoiceEntered
-        ];
+        $invoiceEntered = InvoiceEntered::with('suppliere','product')->orderByDesc('id')->paginate(10);
+        $viewData = ['invoiceEntered' => $invoiceEntered];
 
         return view('admin.invoice_entered.index', $viewData);
     }
@@ -30,8 +24,7 @@ class AdminInvoiceEnteredController extends Controller
     public function hansudung($id)
     {
         $invoiceEntered = InvoiceEntered::where('ie_product_id',$id)->get();
-        $datenow = date('Y-m-d 00:00:00');  
-        // $date_now->toDateTimeString();
+        $datenow = date('Y-m-d 00:00:00');
         return view('admin.inventory.hansudung', compact('invoiceEntered','datenow'));
     }
 
@@ -46,10 +39,6 @@ class AdminInvoiceEnteredController extends Controller
 
     public function store(Request $request)
     {
-        // $data               = $request->except('_token');
-        // $data['created_at'] =  Carbon::now();
-        // $data['ie_total_money'] = $request->ie_number * $request->ie_money;
-        // InvoiceEntered::insert($data);
         $request->validate([
             'ie_number' => 'min:0',
             'ie_money' => 'min:0',
@@ -70,11 +59,11 @@ class AdminInvoiceEnteredController extends Controller
         $data1['NgaySX'] = $request->nsx;
         $data1['Hansudung'] = $request->hsd;
         $thanhtoan = $request->ie_the_advance;
-        if($thanhtoan>=$tongtien){
+        if($thanhtoan >= $tongtien) {
             $data1['ie_the_advance'] = $tongtien;
             $sodu = $thanhtoan-$tongtien;
         }
-        if($thanhtoan<$tongtien){
+        if($thanhtoan < $tongtien) {
             $data1['ie_the_advance'] = $thanhtoan;
             $sodu = 0;
         }
@@ -82,7 +71,6 @@ class AdminInvoiceEnteredController extends Controller
         $data1->save();
         $products->save();
         $history = new Import_histories();
-        // $history['id_import'] = $data1->id;
         $history['id_invoice'] = $data1->id;
         $history['thanhtoan'] = $data1->ie_the_advance;
         $history->save();
@@ -90,7 +78,7 @@ class AdminInvoiceEnteredController extends Controller
         $checkProduct2 = $request->ie_product_id2;
         $checkProduct3 = $request->ie_product_id3;
 
-        if($checkProduct2!='none'){
+        if($checkProduct2 != 'none') {
             $data2 = new InvoiceEntered();
             $data2['created_at'] =  Carbon::now();
             $tongtien = $request->ie_number2 * $request->ie_money2;
@@ -103,21 +91,20 @@ class AdminInvoiceEnteredController extends Controller
             $data2['ie_number'] = $request->ie_number2;
             $data2['NgaySX'] = $request->nsx2;
             $data2['Hansudung'] = $request->hsd2;
-            if($sodu>=$tongtien){
+            if($sodu >= $tongtien) {
                 $data2['ie_the_advance'] = $tongtien;
                 $sodu2 = $thanhtoan-$tongtien;
             }
-            if($sodu<$tongtien){
+            if($sodu < $tongtien) {
                 $data2['ie_the_advance'] = $sodu;
                 $sodu2 = 0;
             }
             $data2->save();
             $history2 = new Import_histories();
-            // $history2['id_import'] = $data2->id;
             $history['id_invoice'] = $data2->id;
             $history['thanhtoan'] = $data2->ie_the_advance;
             $history2->save();
-            if($checkProduct3!='none'){
+            if($checkProduct3 != 'none'){
                 $data3 = new InvoiceEntered();
                 $data3['created_at'] =  Carbon::now();
                 $tongtien = $request->ie_number3 * $request->ie_money3;
@@ -130,31 +117,30 @@ class AdminInvoiceEnteredController extends Controller
                 $data3['ie_number'] = $request->ie_number3;
                 $data3['NgaySX'] = $request->nsx3;
                 $data3['Hansudung'] = $request->hsd3;
-                if($sodu2>=$tongtien){
+                if($sodu2 >= $tongtien) {
                     $data3['ie_the_advance'] = $tongtien;
                 }
-                if($sodu2<$tongtien){
+                if($sodu2 < $tongtien) {
                     $data3['ie_the_advance'] = $sodu2;
                 }
                 $data3->save();
                 $history3 = new Import_histories();
-                // $history3['id_import'] = $data3->id;
                 $history['id_invoice'] = $data3->id;
                 $history3['thanhtoan'] = $data3->ie_the_advance;
                 $history3->save();
             }
         }
        
-        return redirect()->back()->with('success', 'Thêm hành công dữ liệu');
+        return redirect()->back()->with('success', 'Thêm thành công dữ liệu');
     }
 
     public function edit($id)
     {
-        // $histories = Import_histories::where('id_import','=',$id)->get();
         $histories = Import_histories::where('id_invoice','=',$id)->get();
         $invoiceEntered = InvoiceEntered::find($id);
 		$suppliere = Supplier::all();
 		$products = Product::select('id','pro_name','pro_price','pro_number')->orderByDesc('id')->get();
+
 		return view('admin.invoice_entered.update', compact('suppliere','invoiceEntered','products','histories'));
     }
 
@@ -164,17 +150,17 @@ class AdminInvoiceEnteredController extends Controller
         $update->ie_the_advance = $update->ie_the_advance + $request->ie_the_advance;
         $update->save();
         $history = new Import_histories();
-        // $history['id_import'] = $update->id;
         $history['id_invoice'] = $update->id;
         $history['thanhtoan'] =  $request->ie_the_advance;;
         $history->save();
+
         return redirect()->back()->with('success', 'Chỉnh sửa thành công dữ liệu');
     }
 
     public function active($id)
     {
-        $menu               = Menu::find($id);
-        $menu->mn_status = ! $menu->mn_status;
+        $menu = Menu::find($id);
+        $menu->mn_status = !$menu->mn_status;
         $menu->save();
 
         return redirect()->back();
@@ -182,8 +168,8 @@ class AdminInvoiceEnteredController extends Controller
 
     public function hot($id)
     {
-        $menu               = Menu::find($id);
-        $menu->mn_hot = ! $menu->mn_hot;
+        $menu = Menu::find($id);
+        $menu->mn_hot = !$menu->mn_hot;
         $menu->save();
 
         return redirect()->back();
@@ -193,6 +179,7 @@ class AdminInvoiceEnteredController extends Controller
     {
         $invoiceEntered = InvoiceEntered::find($id);
         if ($invoiceEntered) $invoiceEntered->delete();
+
         return redirect()->back();
     }
 }

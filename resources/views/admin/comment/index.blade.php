@@ -31,6 +31,7 @@
                                 <th style="width: 10px">STT</th>
                                 <th>Tên</th>
                                 <th>Bình luận </th>
+                                <th>Sản phẩm bình luận</th>
                                 <th>Thời gian bình luận</th>
                                 <th>Hành động</th>
                             </tr>
@@ -40,6 +41,7 @@
                                         <td>{{ (($comments->currentPage() - 1) * $comments->perPage()) + ( $key + 1)  }}</td>
                                         <td>{{ $comment->user->name ?? "[N\A]" }}</td>
                                         <td>{{ $comment->cmt_content ?? "[N\A]" }}</td>
+                                        <td>{{ $comment->product->pro_name ?? "[N\A]" }}</td>td>
                                         <td>{{ $comment->created_at }}</td>
                                         <td>
                                             <a href="{{  route('admin.comment.delete', $comment->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>

@@ -24,9 +24,9 @@ class AdminRequestAccount extends FormRequest
     public function rules()
     {
         $rules = [
-            'email'     => 'required|max:190|min:3|unique:admins,email,'.$this->id,
-            'name'      => 'required',
-            'phone'     => 'required|unique:admins,phone,'.$this->id,
+            'email' => 'required|max:190|min:3|unique:admins,email,'.$this->id,
+            'name' => 'required',
+            'phone' => 'required|unique:admins,phone,'.$this->id,
         ];
 
         if (!$this->id) 
@@ -40,11 +40,11 @@ class AdminRequestAccount extends FormRequest
     public function messages()
     {
         return [
-            'email.required'         => 'Dữ liệu không được để trống',
-            'email.unique'           => 'Dữ liệu đã tồn tại',
-            'phone.unique'           => 'Dữ liệu đã tồn tại',
-            'phone.required'         => 'Dữ liệu không được để trống',
-            'password.required'      => 'Dữ liệu không được để trống',
+            'email.required' => 'Dữ liệu không được để trống',
+            'email.unique' => 'Dữ liệu đã tồn tại',
+            'phone.unique' => 'Dữ liệu đã tồn tại',
+            'phone.required' => 'Dữ liệu không được để trống',
+            'password.required' => 'Dữ liệu không được để trống',
         ];
     }
 }

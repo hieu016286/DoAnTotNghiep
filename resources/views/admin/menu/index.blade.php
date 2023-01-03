@@ -26,7 +26,7 @@
                                     <th style="width: 10px">Stt</th>
                                     <th style="width: 10px">ID</th>
                                     <th>Tên</th>
-                                    <th>Ảnh</th>
+{{--                                    <th>Ảnh</th>--}}
                                     <th>Tình trạng</th>
                                     <th>Hot</th>
                                     <th>Thời gian</th>
@@ -38,9 +38,9 @@
                                             <td>{{ ($key + 1)}}</td>
                                             <td>{{ $menu->id }}</td>
                                             <td>{{ $menu->mn_name }}</td>
-                                            <td>
-                                                <img src="{{ pare_url_file($menu->mn_avatar) }}" style="width: 80px;height: 80px;">
-                                            </td>
+{{--                                            <td>--}}
+{{--                                                <img src="{{ pare_url_file($menu->mn_avatar) }}" style="width: 80px;height: 80px;">--}}
+{{--                                            </td>--}}
                                             <td>
                                                 @if ($menu->mn_status == 1)
                                                     <a href="{{ route('admin.menu.active', $menu->id) }}" class="label label-info">Hiện</a>

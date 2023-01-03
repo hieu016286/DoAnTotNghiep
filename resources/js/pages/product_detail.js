@@ -145,9 +145,10 @@ var ProductDetail = {
 
     addFavourite()
     {
-        //Thêm sản phẩm yêu thích
+        // Thêm sản phẩm yêu thích
         $(".js-add-favourite").click(function (event) {
             event.preventDefault();
+            console.log(1221);
             let $this = $(this);
             let URL = $this.attr('href');
 

@@ -20,8 +20,11 @@
 					<input type="text" class="form-control" value="{{ Request::get('name') }}" name="name" placeholder="Name ...">
 					<select name="category" class="form-control">
 						<option value="0">Danh mục</option>
-						@foreach($categories as $item)
-						<option value="{{ $item->id }}" {{ Request::get('category') == $item->id ? "selected='selected'" : "" }}>{{ $item->c_name }}</option>
+						@foreach($categories as $category)
+							<option value="{{ $category->id }}" {{ Request::get('category') == $category->id ? "selected='selected'" : "" }}>
+									<?php $str = '' ;for($i = 0; $i < $category->level; $i ++){ echo $str; $str .= '-- '; }?>
+								{{ $category->c_name }}
+							</option>
 						@endforeach
 					</select>
 
