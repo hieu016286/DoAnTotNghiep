@@ -31,10 +31,10 @@ class AdminRequestCategory extends FormRequest
     public function messages()
     {
         return [
-            'c_name.required'   => 'Dữ liệu không được để trống',
-            'c_name.unique'     => 'Dữ liệu đã tồn tại',
-            'c_name.max'        => 'Dữ liệu không quá 190 ký tự',
-            'c_name.min'        => 'Dữ liệu phải nhiều hơn 3 ký tự'
+            'c_name.required' => 'Tiêu đề không được để trống',
+            'c_name.unique' => 'Tiêu đề này đã tồn tại',
+            'c_name.max' => 'Tiêu đề không được quá 190 ký tự',
+            'c_name.min' => 'Tiêu đề phải nhiều hơn 3 ký tự'
         ];
     }
 }

@@ -24,10 +24,23 @@ class AdminRequestArticle extends FormRequest
     public function rules()
     {
         return [
-            'a_name'          => 'required|max:190|min:3|unique:articles,a_name,'.$this->id,
-            'a_description'   => 'required',
-            'a_menu_id'   => 'required',
-            'a_content'       => 'required',
+            'a_name' => 'required|max:190|min:3|unique:articles,a_name,'.$this->id,
+            'a_description' => 'required',
+            'a_menu_id' => 'required',
+            'a_content' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'a_name.required' => 'Tên không được để trống',
+            'a_name.unique' => 'Tên này đã tồn tại',
+            'a_name.max' => 'Tên không được quá 190 ký tự',
+            'a_name.min' => 'Tên đề phải nhiều hơn 3 ký tự',
+            'a_description.required' => 'Mô tả không được để trống',
+            'a_menu_id.required' => 'Danh mục không được để trống',
+            'a_content.required' => 'Nội dung không được để trống'
         ];
     }
 }

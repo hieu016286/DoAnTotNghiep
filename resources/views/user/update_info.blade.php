@@ -6,28 +6,24 @@
 @stop
 @section('content')
     <section>
-        <div class="title">Cập nhật thông tin</div>
+        <div class="title">Cập Nhật Thông Tin</div>
         <form action="" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="">Name</label>
-                <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}" placeholder="">
-                {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                <label for="">Họ Tên :</label>
+                <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}" placeholder="Họ và tên ...">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" placeholder="Enter email">
-                {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                <label for="exampleInputEmail1">Email :</label>
+                <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" placeholder="Email ...">
             </div>
             <div class="form-group">
-                <label for="">Phone</label>
-                <input type="number" name="phone" class="form-control" value="{{ Auth::user()->phone }}" placeholder="Enter email">
-                {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                <label for="">Số Điện Thoại :</label>
+                <input type="number" name="phone" class="form-control" value="{{ Auth::user()->phone }}" placeholder="Số điện thoại ...">
             </div>
             <div class="form-group">
-                <label for="">Address</label>
-                <input type="text" name="address" class="form-control" value="{{ Auth::user()->address }}" placeholder="Địa chỉ">
-                {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                <label for="">Địa Chỉ :</label>
+                <input type="text" name="address" class="form-control" value="{{ Auth::user()->address }}" placeholder="Địa chỉ ...">
             </div>
             <div class="from-group">
                 <div class="upload-btn-wrapper">
@@ -35,9 +31,8 @@
                     <input type="file" name="avatar" />
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-blue btn-md">Submit</button>
+            <br>
+            <button type="submit" class="btn btn-blue btn-md">Cập Nhật</button>
         </form>
-
     </section>
 @stop

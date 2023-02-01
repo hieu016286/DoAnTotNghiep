@@ -5,7 +5,7 @@
         <h1>Thêm mới menu</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.menu.index') }}"> Menu</a></li>
+            <li><a href="{{ route('admin.menu.index') }}"> Menu</a></li>
             <li class="active"> Thêm mới</li>
         </ol>
     </section>
@@ -20,8 +20,8 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('mn_name') ? 'has-error' : '' }}">
-                                <label for="name">Tên <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="mn_name"  placeholder="Tên ...">
+                                <label for="name">Tiêu Đề <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" name="mn_name"  placeholder="Tiêu đề ...">
                                 @if ($errors->first('mn_name'))
                                     <span class="text-danger">{{ $errors->first('mn_name') }}</span>
                                 @endif

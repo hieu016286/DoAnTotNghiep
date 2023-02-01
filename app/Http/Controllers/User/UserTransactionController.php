@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
+use Throwable;
 
 class UserTransactionController extends Controller
 {
     public function index(Request $request)
     {
-        $transactions = Transaction::whereRaw(1)
-            ->where('tst_user_id', \Auth::id());
+        $transactions = Transaction::whereRaw(1)->where('tst_user_id', Auth::id());
 
         if ($request->id) {
         	$id = str_replace(['DH','dh'],'', $request->id);
@@ -22,7 +23,6 @@ class UserTransactionController extends Controller
         if ($email = $request->email) {
             $transactions->where('tst_email', 'like', '%' . $email . '%');
         }
-
         if ($type = $request->type) {
             if ($type == 1) {
                 $transactions->where('tst_user_id', '<>', 0);
@@ -35,8 +35,7 @@ class UserTransactionController extends Controller
             $transactions->where('tst_status', $status);
         }
 
-        $transactions = $transactions->orderByDesc('id')
-            ->paginate(10);
+        $transactions = $transactions->orderByDesc('id')->paginate(10);
 
         // if ($request->export) {
         //     return \Excel::download(new TransactionExport($transactions), 'don-hang.xlsx');
@@ -44,7 +43,7 @@ class UserTransactionController extends Controller
 
         $viewData = [
             'transactions' => $transactions,
-            'query'        => $request->query()
+            'query' => $request->query()
         ];
 
         return view('user.transaction', $viewData);
@@ -54,13 +53,13 @@ class UserTransactionController extends Controller
     {
         $transaction = Transaction::with('user:id,name')->where([
             'id'          => $id,
-            'tst_user_id' => \Auth::id()
+            'tst_user_id' => Auth::id()
         ])->first();
         if (!$transaction) return redirect()->to('/');
 
         $viewData = [
             'transaction' => $transaction,
-            'title_page'  => "Chi tiết đơn hàng #". $transaction->id,
+            'title_page'  => "Chi Tiết Đơn Hàng #". $transaction->id,
             'orders'      => $this->getOrderByTransactionID($id)
         ];
         return view('user.order', $viewData);
@@ -70,7 +69,7 @@ class UserTransactionController extends Controller
     {
         $transaction = Transaction::with('user:id,name')->where([
             'id'          => $id,
-            'tst_user_id' => \Auth::id()
+            'tst_user_id' => Auth::id()
         ])->first();
         if (!$transaction || $transaction->tst_status == -1)
             return redirect()->to('/');
@@ -78,7 +77,7 @@ class UserTransactionController extends Controller
         $viewData = [
             'transaction' => $transaction,
             'orders'      => $this->getOrderByTransactionID($id),
-            'title_page'  => "Theo dõi đơn hàng #". $transaction->id,
+            'title_page'  => "Theo Dõi Đơn Hàng #". $transaction->id,
         ];
         return view('user.tracking_order', $viewData);
     }
@@ -97,21 +96,18 @@ class UserTransactionController extends Controller
 
     protected function getOrderByTransactionID($transactionID)
     {
-        return Order::with('product:id,pro_name,pro_slug,pro_avatar')
-            ->where('od_transaction_id', $transactionID)
-            ->get();
+        return Order::with('product:id,pro_name,pro_slug,pro_avatar')->where('od_transaction_id', $transactionID)->get();
     }
 
-	/**
-	 * @param $id
-	 * export hoa don cho user
-	 */
+    /**
+     * @param $id
+     * Export hóa đơn co user
+     * @throws Throwable
+     */
     public function exportInvoiceTransaction($id)
 	{
 		$transaction = Transaction::with('admin:id,name')->where('id', $id)->first();
-		$orders = Order::with('product:id,pro_name,pro_slug,pro_avatar')
-			->where('od_transaction_id', $id)
-			->get();
+		$orders = Order::with('product:id,pro_name,pro_slug,pro_avatar')->where('od_transaction_id', $id)->get();
 
 		$html =  view('user.include._inc_invoice_transaction',compact('transaction','orders'))->render();
 		return response()->json(['html' => $html]);

@@ -2,11 +2,11 @@
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Cập nhật page tinhx</h1>
+        <h1>Chỉnh sửa page tĩnh</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.static.index') }}"> Static</a></li>
-            <li class="active"> Update</a></li>
+            <li><a href="{{ route('admin.static.index') }}"> Page tĩnh</a></li>
+            <li class="active"> Chỉnh sửa</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -20,27 +20,33 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('s_title') ? 'has-error' : '' }}">
-                                <label for="name">Title <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="s_title"  placeholder="Title ..." value="{{ $static->s_title }}">
+                                <label for="name">Tiêu Đề <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" name="s_title"  placeholder="Title ..." value="{{ old('s_title') ?? $static->s_title }}">
                                 @if ($errors->first('s_title'))
                                     <span class="text-danger">{{ $errors->first('s_title') }}</span>
                                 @endif
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <div class="form-group {{ $errors->first('e_link') ? 'has-error' : '' }}">
+                            <div class="form-group {{ $errors->first('s_type') ? 'has-error' : '' }}">
                                 <label for="name">Loại Page <span class="text-danger">(*)</span></label>
                                 <select class="form-control" name="s_type">
                                     @foreach($type as $key => $item)
-                                        <option value="{{  $key }}" {{ $static->s_type == $key ? "selected='selected'" : "" }}>{{  $item }}</option>
+                                        <option value="{{ $key }}" {{ old('s_type') == $key || $static->s_type == $key ? "selected='selected'" : "" }}>{{ $item }}</option>
                                     @endforeach
                                 </select>
+                                @if ($errors->first('s_type'))
+                                    <span class="text-danger">{{ $errors->first('s_type') }}</span>
+                                @endif
                             </div>
                         </div>
                          <div class="col-sm-8">
-                            <div class="form-group {{ $errors->first('e_link') ? 'has-error' : '' }}">
+                            <div class="form-group">
                                 <label for="name">Nội dung <span class="text-danger">(*)</span></label>
-                                <textarea class="form-control textarea" id="content" name="s_content">{!! $static->s_content !!}</textarea>
+                                <textarea class="form-control textarea" id="content" name="s_content">{!! old('s_content') ?? $static->s_content !!}</textarea>
+                                @if ($errors->first('s_content'))
+                                    <span class="text-danger">{{ $errors->first('s_content') }}</span>
+                                @endif
                             </div>
                         </div>
                        

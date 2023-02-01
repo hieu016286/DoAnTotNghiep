@@ -5,7 +5,7 @@
         <h1>Quản lý thông tin</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
-            <li><a href="{{  route('admin.attribute.index') }}"> Thông tin</a></li>
+            <li><a href="{{ route('admin.attribute.index') }}"> Thông tin</a></li>
             <li class="active"> Danh sách </li>
         </ol>
     </section>
@@ -24,10 +24,10 @@
                             <tbody>
                                 <tr>
                                     <th style="width: 10px">STT</th>
-                                    <th>Name</th>
-                                    <th>Kiểu</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Loại</th>
                                     <th>Danh mục</th>
-                                    <th>Thời gian thêm</th>
+                                    <th>Thời gian tạo</th>
                                     <th>Hành động</th>
                                 </tr>
                                 @if (isset($attibutes))
@@ -42,10 +42,10 @@
                                             <td>
                                                 <span class="label label-info">{{ $attribute->category->c_name ?? "[N\A]" }}</span>
                                             </td>
-                                            <td>{{  $attribute->created_at }}</td>
+                                            <td>{{ $attribute->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.attribute.update', $attribute->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
-                                                <a href="{{  route('admin.attribute.delete', $attribute->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
+                                                <a href="{{ route('admin.attribute.update', $attribute->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Chỉnh sửa</a>
+                                                <a href="{{ route('admin.attribute.delete', $attribute->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

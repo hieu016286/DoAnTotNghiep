@@ -10,7 +10,7 @@
 </style>
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Danh sách đánh giá, review sản phẩm</h1>
+        <h1>Danh sách đánh giá</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li><a href="{{  route('admin.rating.index') }}"> Đánh giá</a></li>

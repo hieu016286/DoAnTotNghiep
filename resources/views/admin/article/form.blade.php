@@ -9,9 +9,9 @@
                 <h3 class="box-title">Thông tin cơ bản</h3>
             </div>
             <div class="box-body">
-                <div class="form-group "> 
-                    <label for="exampleInputEmail1">Tên</label> 
-                    <input type="text" class="form-control" name="a_name" placeholder="Nhập tên ...." autocomplete="off" value="{{  $article->a_name ?? old('a_name') }}"> 
+                <div class="form-group {{ $errors->first('a_name') ? 'has-error' : '' }}">
+                    <label for="exampleInputEmail1">Tên</label> <span class="text-danger">(*)</span>
+                    <input type="text" class="form-control" name="a_name" placeholder="Tên ...." autocomplete="off" value="{{  $article->a_name ?? old('a_name') }}">
                     @if ($errors->first('a_name'))
                         <span class="text-danger">{{ $errors->first('a_name') }}</span>
                     @endif
@@ -32,20 +32,20 @@
                          </div>
                     </div>
                 </div>
-                <div class="form-group "> 
-                    <label for="exampleInputEmail1">Description</label> 
+                <div class="form-group {{ $errors->first('a_description') ? 'has-error' : '' }}">
+                    <label for="exampleInputEmail1">Mô Tả</label> <span class="text-danger">(*)</span>
                     <textarea name="a_description" class="form-control" cols="5" rows="2" autocomplete="off">{{  $article->a_description ?? old('a_description') }}</textarea> 
                     @if ($errors->first('a_description'))
                         <span class="text-danger">{{ $errors->first('a_description') }}</span>
                     @endif
                 </div>
-                <div class="form-group ">
-                    <label class="control-label">Danh mục <b class="col-red">(*)</b></label> 
+                <div class="form-group {{ $errors->first('a_menu_id') ? 'has-error' : '' }}">
+                    <label class="control-label">Danh Mục <span class="text-danger">(*)</span></label>
                     <select name="a_menu_id" class="form-control ">
                         <option value="">__Click__</option>
                         @foreach($menus as $menu)
-                            <option value="{{ $menu->id }}" {{ ($article->a_menu_id ?? 0 == $menu->id) ? "selected='selected'" : "" }}>
-                                {{  $menu->mn_name }}
+                            <option value="{{ $menu->id }}" {{ ($article->a_menu_id ?? 0) == $menu->id ? "selected='selected'" : ""}}>
+                                {{ $menu->mn_name }}
                             </option>
                         @endforeach
                     </select>
@@ -59,7 +59,7 @@
         
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">Nội dung</h3>
+                <h3 class="box-title">Nội dung</h3> <span class="text-danger">(*)</span>
             </div>
             <div class="box-body">
                 <div class="form-group ">
@@ -75,13 +75,13 @@
     <div class="col-sm-4">
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">Ảnh đại diện</h3>
+                <h3 class="box-title">Ảnh</h3>
             </div>
             <div class="box-body block-images">
                 <div style="margin-bottom: 10px"> 
                     <img src="{{ pare_url_file($article->a_avatar ?? '') }}" onerror="this.onerror=null;this.src='/images/no-image.jpg';" alt="" class="img-thumbnail" style="width: 200px;height: 200px;"> 
                 </div>
-                <div style="position:relative;"> <a class="btn btn-primary" href="javascript:;"> Choose File... <input type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="a_avatar" size="40" class="js-upload"> </a> &nbsp; <span class="label label-info" id="upload-file-info"></span> </div>
+                <div style="position:relative;"> <a class="btn btn-primary" href="javascript:;"> Chọn ảnh... <input type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="a_avatar" size="40" class="js-upload"> </a> &nbsp; <span class="label label-info" id="upload-file-info"></span> </div>
             </div>
         </div>
     </div>

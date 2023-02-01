@@ -27,7 +27,7 @@
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('admin.profile.update', $admin->id) }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Tên</label>
                                     <div class="col-sm-10">
                                         <input type="name" class="form-control" name="name" placeholder="" value="{{ $admin->name }}">
                                     </div>
@@ -42,25 +42,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Phone</label>
+                                    <label for="inputName" class="col-sm-2 control-label">SĐT</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="phone" placeholder="Name" value="{{ $admin->phone }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Address</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Địa chỉ</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ cá nhân" value="{{ $admin->address }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Class</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Lớp</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="class" placeholder="Lớp học" value="{{ $admin->class }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Avatar</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Ảnh</label>
                                     <div class="col-sm-10">
                                         <input type="file" class="form-control" name="avatar" >
                                     </div>

@@ -2,10 +2,11 @@
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Thêm mới NCC</h1>
+        <h1>Thêm mới nhà cung cấp</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.ncc.index') }}"> Admin</a></li>
+            <li><a href="{{  route('admin.ncc.index') }}"> Nhà cung cấp</a></li>
+            <li class="active"> Thêm mới </li>
         </ol>
     </section>
     <!-- Main content -->
@@ -20,8 +21,8 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('sl_name') ? 'has-error' : '' }}">
-                                <label for="name">Name <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" value="{{ old('sl_name') }}" name="sl_name"  placeholder="Name ...">
+                                <label for="name">Tên <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" value="{{ old('sl_name') }}" name="sl_name" placeholder="Tên ...">
                                 @if ($errors->first('sl_name'))
                                     <span class="text-danger">{{ $errors->first('sl_name') }}</span>
                                 @endif
@@ -29,8 +30,8 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('sl_phone') ? 'has-error' : '' }}">
-                                <label for="name">Phone <span class="text-danger">(*)</span></label>
-                                <input type="number" class="form-control" value="{{ old('sl_phone') }}"  name="sl_phone"  placeholder="Phone ...">
+                                <label for="name">SĐT <span class="text-danger">(*)</span></label>
+                                <input type="number" class="form-control" value="{{ old('sl_phone') }}"  name="sl_phone"  placeholder="SĐT ...">
                                 @if ($errors->first('sl_phone'))
                                     <span class="text-danger">{{ $errors->first('sl_phone') }}</span>
                                 @endif
@@ -47,8 +48,8 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('sl_address') ? 'has-error' : '' }}">
-                                <label for="name">Address <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" value="{{ old('sl_address') }}"  name="sl_address"  placeholder="Address ...">
+                                <label for="name">Địa Chỉ <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" value="{{ old('sl_address') }}"  name="sl_address"  placeholder="Địa chỉ ...">
                                 @if ($errors->first('sl_address'))
                                     <span class="text-danger">{{ $errors->first('sl_address') }}</span>
                                 @endif

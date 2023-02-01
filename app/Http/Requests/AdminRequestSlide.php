@@ -19,16 +19,16 @@ class AdminRequestSlide extends FormRequest
     public function rules()
     {
         return [
-            'sd_title'         => 'required',
-            'sd_link'          => 'required',
+            'sd_title' => 'required',
+            'sd_link' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'sd_title.required'         => 'Dữ liệu không được để trống',
-            'sd_link.required'         => 'Dữ liệu không được để trống',
+            'sd_title.required' => 'Tiêu đề không được để trống',
+            'sd_link.required' => 'Đường dẫn không được để trống'
         ];
     }
 }

@@ -5,7 +5,7 @@
         <h1>Thêm mới bài viết</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.article.index') }}"> bài viết</a></li>
+            <li><a href="{{  route('admin.article.index') }}"> Bài viết</a></li>
             <li class="active"> Thêm mới</li>
         </ol>
     </section>

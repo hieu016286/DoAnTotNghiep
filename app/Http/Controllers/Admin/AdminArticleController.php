@@ -51,7 +51,7 @@ class AdminArticleController extends Controller
 
         $id = Article::insertGetId($data);
     
-        return redirect()->back()->with('success', 'Thêm hành công dữ liệu');
+        return redirect()->back()->with('success', 'Thêm thành công dữ liệu');
     }
 
     public function edit($id)

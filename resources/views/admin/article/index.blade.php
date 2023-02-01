@@ -5,7 +5,7 @@
         <h1>Quản lý bài viết</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.article.index') }}"> Bài viết</a></li>
+            <li><a href="{{ route('admin.article.index') }}"> Bài viết</a></li>
             <li class="active"> Danh sách </li>
         </ol>
     </section>
@@ -65,8 +65,8 @@
                                             </td>
                                             <td>{{  $article->created_at }}</td>
                                             <td style="width: 120px">
-                                                <a href="{{ route('admin.article.update', $article->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
-                                                <a href="{{  route('admin.article.delete', $article->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
+                                                <a href="{{ route('admin.article.update', $article->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Chỉnh sửa</a>
+                                                <a href="{{ route('admin.article.delete', $article->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

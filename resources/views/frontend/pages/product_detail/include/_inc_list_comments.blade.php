@@ -24,8 +24,8 @@
                             <p class="item-footer">
                                 <a href="" class="js-show-form-reply" data-name="{{ $item->user->name ?? "[N\A]" }}"
                                    data-id="{{ $comment->id }}" data-product="{{ $item->cmt_product_id }}">Trả lời</a>
-                                <a href=""><i class="la la-thumbs-up"></i>Hài lòng</a>
-                                <a href=""><i class="la la-thumbs-down"></i>Không hài lòng</a>
+                                <a href=""><i class="la la-thumbs-up"></i> Hài lòng</a>
+                                <a href=""><i class="la la-thumbs-down"></i> Không hài lòng</a>
                                 <a href="">{{ $item->created_at->diffForHumans() }}</a>
                             </p>
                         </div>

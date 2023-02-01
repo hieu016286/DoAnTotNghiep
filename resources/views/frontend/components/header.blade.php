@@ -53,7 +53,7 @@
                     <input type="text" name="k" value="{{ Request::get('k') }}" class="form-control" placeholder="Tìm kiếm sản phẩm ...">
                     <button type="submit" class="btnSearch" style="background-color:#72a27a!important;">
                         <i class="fa fa-search"></i>
-                        <span>Tìm kiếm</span>
+                        <span>&nbsp;Tìm kiếm</span>
                     </button>
                 </form>
             </div>

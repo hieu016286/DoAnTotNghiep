@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminRequestEvent;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Event;
@@ -27,7 +28,7 @@ class AdminEventController extends Controller
         return view('admin.event.create');
     }
 
-    public function store(Request $request)
+    public function store(AdminRequestEvent $request)
     {
         $data = $request->except('_token','e_banner','e_position_1','e_position_2','e_position_3','e_position_4');
         $data['created_at'] = Carbon::now();
@@ -70,7 +71,7 @@ class AdminEventController extends Controller
         return view('admin.event.update', compact('event'));
     }
 
-    public function update(Request $request, $id)
+    public function update(AdminRequestEvent $request, $id)
     {
         $event = Event::find($id);
         $data = $request->except('_token','e_banner','e_position_1','e_position_2','e_position_3','e_position_4');

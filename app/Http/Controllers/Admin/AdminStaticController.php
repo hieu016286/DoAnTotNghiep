@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminRequestPageStatic;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\PageStatic;
@@ -24,7 +25,7 @@ class AdminStaticController extends Controller
         return view('admin.static.create',compact('type'));
     }
 
-    public function store(Request $request)
+    public function store(AdminRequestPageStatic $request)
     {
         $data = $request->except('_token');
         $data['created_at'] = Carbon::now();
@@ -41,7 +42,7 @@ class AdminStaticController extends Controller
         return view('admin.static.update', compact('static','type'));
     }
 
-    public function update(Request $request, $id)
+    public function update(AdminRequestPageStatic $request, $id)
     {
         $static = PageStatic::find($id);
         $data = $request->except('_token');

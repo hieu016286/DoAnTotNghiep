@@ -69,7 +69,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="{{ route('admin.profile.index') }}" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="{{ route('admin.profile.index') }}" class="btn btn-default btn-flat">Thông tin</a>
                                     </div>
 
                                     <div class="pull-right">
@@ -168,7 +168,7 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
 
-            <strong>Đồ án  - 2022</strong>
+            <strong>Đồ án  - 2023</strong>
         </footer>
         <div class="control-sidebar-bg"></div>
     </div>
@@ -270,18 +270,18 @@
 
             $('#nsx3').prop('disabled', true);
             $('#hsd3').prop('disabled', true);
-            $('#hsd').change(function(event){
-                if(Date.parse($("#nsx").val())>Date.parse($("#hsd").val()))
-                alert('Hạn sử dụng không được nhỏ hơn ngày sản xuất');
-            });
-            $('#hsd2').change(function(event){
-                if(Date.parse($("#nsx2").val())>Date.parse($("#hsd2").val()))
-                alert('Hạn sử dụng không được nhỏ hơn ngày sản xuất');
-            });
-            $('#hsd3').change(function(event){
-                if(Date.parse($("#nsx3").val())>Date.parse($("#hsd3").val()))
-                alert('Hạn sử dụng không được nhỏ hơn ngày sản xuất');
-            });
+            // $('#hsd').change(function(event){
+            //     if(Date.parse($("#nsx").val())>Date.parse($("#hsd").val()))
+            //     alert('Hạn sử dụng không được nhỏ hơn ngày sản xuất');
+            // });
+            // $('#hsd2').change(function(event){
+            //     if(Date.parse($("#nsx2").val())>Date.parse($("#hsd2").val()))
+            //     alert('Hạn sử dụng không được nhỏ hơn ngày sản xuất');
+            // });
+            // $('#hsd3').change(function(event){
+            //     if(Date.parse($("#nsx3").val())>Date.parse($("#hsd3").val()))
+            //     alert('Hạn sử dụng không được nhỏ hơn ngày sản xuất');
+            // });
             $(".js-money-input").keyup(function(event) {
                 event.preventDefault();
                 if ($('.js-money-input').val() > 0 && $('#qty').val() > 0) {
@@ -295,12 +295,33 @@
                     let price = currencyFormat(money.val() * qty);
                     $("#total_money").val(price)
                 }
-                if ($('.js-money-input').val() == 0 || ('.js-money-input').val() == '' || $('#qty').val() == 0 || $('#qty').val() == '') {
+                if ($('.js-money-input').val() == 0 || $('.js-money-input').val() == '' || $('#qty').val() == 0 || $('#qty').val() == '') {
                     $('.js-money-input2').prop('disabled', true)
                     $('#qty2').prop('disabled', true);
                     $('.js-products2').prop('disabled', true);
                     $('#nsx2').prop('disabled', true);
                     $('#hsd2').prop('disabled', true);
+
+                    $('.js-money-input2').val(0);
+                    $('#qty2').val(1);
+                    $('.js-products2').val('none').change();
+                    $('#nsx2').val('');
+                    $('#hsd2').val('');
+
+
+                    $('.js-money-input3').prop('disabled', true)
+                    $('#qty3').prop('disabled', true);
+                    $('.js-products3').prop('disabled', true);
+                    $('#nsx3').prop('disabled', true);
+                    $('#hsd3').prop('disabled', true);
+
+                    $('.js-money-input3').val(0);
+                    $('#qty3').val(1);
+                    $('.js-products3').val('none').change();
+                    $('#nsx3').val('');
+                    $('#hsd3').val('');
+
+                    $("#total_money").val(0);
                 }
 
 
@@ -319,19 +340,39 @@
                     let price = currencyFormat(money.val() * qty);
                     $("#total_money").val(price)
                 }
-                if ($('.js-money-input').val() == 0 || ('.js-money-input').val() == '' || $('#qty').val() == 0 || $('#qty').val() == '') {
+                if ($('.js-money-input').val() == 0 || $('.js-money-input').val() == '' || $('#qty').val() == 0 || $('#qty').val() == '') {
                     $('.js-money-input2').prop('disabled', true)
                     $('#qty2').prop('disabled', true);
                     $('.js-products2').prop('disabled', true);
                     $('#nsx2').prop('disabled', true);
                     $('#hsd2').prop('disabled', true);
+
+                    $('.js-money-input2').val(0);
+                    $('#qty2').val(1);
+                    $('.js-products2').val('none').change();
+                    $('#nsx2').val('');
+                    $('#hsd2').val('');
+
+
+                    $('.js-money-input3').prop('disabled', true)
+                    $('#qty3').prop('disabled', true);
+                    $('.js-products3').prop('disabled', true);
+                    $('#nsx3').prop('disabled', true);
+                    $('#hsd3').prop('disabled', true);
+
+                    $('.js-money-input3').val(0);
+                    $('#qty3').val(1);
+                    $('.js-products3').val('none').change();
+                    $('#nsx3').val('');
+                    $('#hsd3').val('');
+
+                    $("#total_money").val('O VNĐ');
                 }
 
 
             })
             $(".js-money-input2").keyup(function(event) {
                 event.preventDefault();
-
                 if ($('.js-money-input2').val() > 0 && $('#qty2').val() > 0) {
                     $('#nsx3').prop('disabled', false);
                     $('#hsd3').prop('disabled', false);
@@ -345,12 +386,18 @@
                     let price = currencyFormat((money.val() * qty) + (money2.val() * qty2));
                     $("#total_money").val(price)
                 }
-                if ($('.js-money-input2').val() == 0 || ('.js-money-input2').val() == '' || $('#qty2').val() == 0 || $('#qty').val() == '') {
-                    $('#nsx3').prop('disabled', true);
-                    $('#hsd3').prop('disabled', true);
+                if ($('.js-money-input2').val() == 0 || $('.js-money-input2').val() == '' || $('#qty2').val() == 0 || $('#qty').val() == '') {
                     $('.js-money-input3').prop('disabled', true)
                     $('#qty3').prop('disabled', true);
                     $('.js-products3').prop('disabled', true);
+                    $('#nsx3').prop('disabled', true);
+                    $('#hsd3').prop('disabled', true);
+
+                    $('.js-money-input3').val(0);
+                    $('#qty3').val(1);
+                    $('.js-products3').val('none').change();
+                    $('#nsx3').val('');
+                    $('#hsd3').val('');
                 }
                 // let $this = $(this);
 
@@ -369,10 +416,18 @@
                     let price = currencyFormat((money.val() * qty) + (money2.val() * qty2));
                     $("#total_money").val(price)
                 }
-                if ($('.js-money-input2').val() == 0 || ('.js-money-input2').val() == '' || $('#qty2').val() == 0 || $('#qty').val() == '') {
+                if ($('.js-money-input2').val() == 0 || $('.js-money-input2').val() == '' || $('#qty2').val() == 0 || $('#qty').val() == '') {
                     $('.js-money-input3').prop('disabled', true)
                     $('#qty3').prop('disabled', true);
                     $('.js-products3').prop('disabled', true);
+                    $('#nsx3').prop('disabled', true);
+                    $('#hsd3').prop('disabled', true);
+
+                    $('.js-money-input3').val(0);
+                    $('#qty3').val(1);
+                    $('.js-products3').val('none').change();
+                    $('#nsx3').val('');
+                    $('#hsd3').val('');
                 }
                 // let $this = $(this);
 

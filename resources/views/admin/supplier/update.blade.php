@@ -2,10 +2,11 @@
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Sửa thông tin nhà cung cấp</h1>
+        <h1>Chỉnh sửa nhà cung cấp</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li><a href="{{  route('admin.ncc.index') }}"> Nhà cung cấp</a></li>
+            <li class="active"> Chỉnh sửa </li>
         </ol>
     </section>
     <!-- Main content -->
@@ -20,7 +21,7 @@
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('sl_name') ? 'has-error' : '' }}">
                                 <label for="name">Tên <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" value="{{ $supplier->sl_name }}" name="sl_name"  placeholder="Name ...">
+                                <input type="text" class="form-control" value="{{ $supplier->sl_name }}" name="sl_name" placeholder="Tên ...">
                                 @if ($errors->first('sl_name'))
                                     <span class="text-danger">{{ $errors->first('sl_name') }}</span>
                                 @endif
@@ -28,8 +29,8 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('sl_phone') ? 'has-error' : '' }}">
-                                <label for="name">SDT <span class="text-danger">(*)</span></label>
-                                <input type="number" class="form-control" value="{{  $supplier->sl_phone }}"  name="sl_phone"  placeholder="Phone ...">
+                                <label for="name">SĐT <span class="text-danger">(*)</span></label>
+                                <input type="number" class="form-control" value="{{  $supplier->sl_phone }}"  name="sl_phone" placeholder="SĐT ...">
                                 @if ($errors->first('sl_phone'))
                                     <span class="text-danger">{{ $errors->first('sl_phone') }}</span>
                                 @endif
@@ -47,7 +48,7 @@
 
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('sl_address') ? 'has-error' : '' }}">
-                                <label for="name">Địa chỉ <span class="text-danger">(*)</span></label>
+                                <label for="name">Địa Chỉ <span class="text-danger">(*)</span></label>
                                 <input type="text" class="form-control" value="{{ $supplier->sl_address }}" name="sl_address"  placeholder="Address">
                                 @if ($errors->first('sl_address'))
                                     <span class="text-danger">{{ $errors->first('sl_address') }}</span>

@@ -2,11 +2,11 @@
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Quản lý Admin</h1>
+        <h1>Quản lý admin</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.account_admin.index') }}"> Admin</a></li>
-            <li class="active"> List </li>
+            <li><a href="{{ route('admin.account_admin.index') }}"> Admin</a></li>
+            <li class="active"> Danh sách </li>
         </ol>
     </section>
     <!-- Main content -->
@@ -27,10 +27,10 @@
                                     <th style="width: 10px">ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>SDT</th>
-                                    <th>Level</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th>SĐT</th>
+                                    <th>Chức vụ</th>
+                                    <th>Thời gian tạo</th>
+                                    <th>Hành Động</th>
                                 </tr>
                             </tbody>
                             @if (isset($admins))
@@ -48,10 +48,10 @@
                                                     <span class="label label-default">Nhân viên</span>
                                                 @endif
                                             </td>
-                                            <td>{{  $admin->updated_at }}</td>
+                                            <td>{{ $admin->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.account_admin.update', $admin->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a href="{{  route('admin.account_admin.delete', $admin->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                <a href="{{ route('admin.account_admin.update', $admin->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Chỉnh sửa</a>
+                                                <a href="{{ route('admin.account_admin.delete', $admin->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

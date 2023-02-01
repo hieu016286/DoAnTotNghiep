@@ -9,18 +9,19 @@
                 <h3 class="box-title">Thông tin cơ bản</h3>
             </div>
             <div class="box-body">
-                <div class="form-group ">
-                    <label for="exampleInputEmail1">Tên</label>
-                    <input type="text" class="form-control" name="pro_name" placeholder="Nhập tên sản phẩm ...." autocomplete="off" value="{{  $product->pro_name ?? old('pro_name') }}">
+                <div class="form-group {{ $errors->first('pro_name') ? 'has-error' : '' }}">
+                    <label for="exampleInputEmail1">Tên Sản Phẩm</label> <b class="col-red" style="color: red">(*)</b></label>
+                    <input type="text" class="form-control" name="pro_name" placeholder="Tên sản phẩm ...." autocomplete="off" value="{{ $product->pro_name ?? old('pro_name') }}">
                     @if ($errors->first('pro_name'))
                         <span class="text-danger">{{ $errors->first('pro_name') }}</span>
                     @endif
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Giá sản phẩm</label>
-                             <input type="text" min="0" name="pro_price" value="{{  $product->pro_price ?? old('pro_price',0) }}" class="form-control" data-type="currency" placeholder="15.000.000">
+                        <div class="form-group {{ $errors->first('pro_price') ? 'has-error' : '' }}">
+                             <label for="exampleInputEmail1">Giá Sản Phẩm</label> <b class="col-red" style="color: red">(*)</b></label>
+                             <input type="text" min="0" name="pro_price" value="{{ $product->pro_price ?? old('pro_price') }}" class="form-control" data-type="currency" placeholder="... VNĐ"
+                                    oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                              @if ($errors->first('pro_price'))
                                 <span class="text-danger">{{ $errors->first('pro_price') }}</span>
                             @endif
@@ -28,14 +29,15 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Giảm giá</label>
-                             <input type="number" min="0" name="pro_sale" value="{{  $product->pro_sale ?? old('pro_sale',0) }}" class="form-control" data-type="currency" placeholder="5">
+                             <label for="exampleInputEmail1">Giảm Giá</label>
+                             <input type="number" min="0" name="pro_sale" value="{{ $product->pro_sale ?? old('pro_sale') }}" class="form-control" data-type="currency" placeholder="... VNĐ"
+                                    oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                         </div>
                     </div>
                     <!-- <div class="col-sm-2">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Số lượng</label>
-                            <input type="number" name="pro_number_import" value="{{  $product->pro_number_import ?? old('pro_number_import',0) }}" class="form-control"  placeholder="5">
+                            <input type="number" name="pro_number_import" value="{{ $product->pro_number_import ?? old('pro_number_import', 0) }}" class="form-control"  placeholder="5">
                         </div>
                     </div> -->
                     
@@ -53,20 +55,20 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
                 </div>
-                <div class="form-group ">
-                    <label for="exampleInputEmail1">Mô tả</label>
-                    <textarea name="pro_description" class="form-control" cols="5" rows="2" autocomplete="off">{{  $product->pro_description ?? old('pro_description') }}</textarea>
+                <div class="form-group {{ $errors->first('pro_description') ? 'has-error' : '' }}">
+                    <label for="exampleInputEmail1">Mô Tả</label> <b class="col-red" style="color: red">(*)</b></label>
+                    <textarea name="pro_description" class="form-control" cols="5" rows="2" autocomplete="off" placeholder=".....">{{ $product->pro_description ?? old('pro_description') }}</textarea>
                     @if ($errors->first('pro_description'))
                         <span class="text-danger">{{ $errors->first('pro_description') }}</span>
                     @endif
                 </div>
 
-                <div class="form-group ">
-                    <label class="control-label">Danh mục <b class="col-red" style="color: red">(*)</b></label>
+                <div class="form-group {{ $errors->first('pro_category_id') ? 'has-error' : '' }}">
+                    <label class="control-label">Danh Mục <b class="col-red" style="color: red">(*)</b></label>
                     <select name="pro_category_id" class="form-control ">
                         <option value="">__Click__</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ ($product->pro_category_id ?? '') == $category->id ? "selected='selected'" : "" }}>
+                            <option value="{{ $category->id }}" {{ ($product->pro_category_id ?? '') == $category->id || old('pro_category_id') == $category->id ? "selected='selected'" : "" }}>
                                     <?php $str = '' ;for($i = 0; $i < $category->level; $i ++){ echo $str; $str .= '-- '; }?>
                                 {{ $category->c_name }}
                             </option>
@@ -83,13 +85,13 @@
                 <h3 class="box-title">Thuộc tính</h3>
             </div> -->
             <div class="box-body">
-                @foreach($attributes  as $key => $attribute)
+                @foreach($attributes as $key => $attribute)
                     <div class="form-group col-sm-3">
                         <h4 style="border-bottom: 1px solid #dedede;padding-bottom: 10px;">{{ $key }}</h4>
                         @foreach($attribute as $item)
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="attribute[]" {{ in_array($item['id'], $attributeOld ) ? "checked"  : '' }}
+                                <input type="checkbox" name="attribute[]" {{ in_array($item['id'], old('attribute') ?? $attributeOld) ? "checked"  : '' }}
                                 value="{{ $item['id'] }}"> {{ $item['atb_name'] }}
                             </label>
                          </div>
@@ -122,12 +124,12 @@
         </div>
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">Nội dung</h3>
+                <h3 class="box-title">Nội dung</h3> <b class="col-red" style="color: red">(*)</b></label>
             </div>
             <div class="box-body">
                 <div class="form-group " id="time">
                     <!-- <label for="exampleInputEmail1">Content</label> -->
-                    <textarea name="pro_content" id="content" class="form-control textarea" required="" cols="5" rows="2" >{{ $product->pro_content ?? '' }}</textarea>
+                    <textarea name="pro_content" id="content" class="form-control textarea" required="" cols="5" rows="2" >{{ old('pro_content') ? old('pro_content') : ($product->pro_content ?? '') }}</textarea>
                     @if ($errors->first('pro_content'))
                         <span class="text-danger">{{ $errors->first('pro_content') }}</span>
                     @endif
@@ -141,7 +143,7 @@
             <div class="box-body">
                 <div class="form-group " id="time">
                     <!-- <label for="exampleInputEmail1">Content</label> -->
-                    <textarea name="preview" id="contentt" class="form-control textarea" required="" cols="5" rows="2" >{{ $product->preview ?? '' }}</textarea>
+                    <textarea name="preview" id="contentt" class="form-control textarea" required="" cols="5" rows="2" >{{ old('preview') ? old('preview') : ($product->preview ?? '') }}</textarea>
                     @if ($errors->first('preview'))
                         <span class="text-danger">{{ $errors->first('preview') }}</span>
                     @endif

@@ -5,7 +5,8 @@
         <h1>Thêm mới đơn nhập hàng</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.invoice_entered.index') }}"> Quản trị</a></li>
+            <li><a href="{{ route('admin.invoice_entered.index') }}"> Nhập kho</a></li>
+            <li class="active"> Thêm mới </li>
         </ol>
     </section>
     <!-- Main content -->

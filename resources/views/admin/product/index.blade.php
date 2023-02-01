@@ -17,7 +17,7 @@
                <div class="box-title">
                     <form class="form-inline">
                         <input type="text" class="form-control" value="{{ Request::get('id') }}" name="id" placeholder="ID">
-                        <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name" placeholder="Name ...">
+                        <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name" placeholder="Tên sản phẩm ...">
                         <select name="category" class="form-control" >
                             <option value="0">Danh mục</option>
                             @foreach($categories as $item)
@@ -43,7 +43,7 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th>Tên</th>
+                                    <th>Tên sản phẩm</th>
                                     <th>Danh mục</th>
                                     <th>Ảnh</th>
                                     <th>Số lượng</th>
@@ -109,8 +109,8 @@
                                             </td>
 
                                             <td style="width: 160px;">
-                                                <a href="{{ route('admin.product.update', $product->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
-                                                <a href="{{  route('admin.product.delete', $product->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
+                                                <a href="{{ route('admin.product.update', $product->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Chỉnh sửa</a>
+                                                <a href="{{ route('admin.product.delete', $product->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

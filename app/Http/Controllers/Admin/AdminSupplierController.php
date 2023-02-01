@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminSupplierRequest;
 use App\Models\Supplier;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class AdminSupplierController extends Controller
 		return view('admin.supplier.create');
 	}
 
-	public function store(Request $request)
+	public function store(AdminSupplierRequest $request)
 	{
 		$data = $request->except("_token");
 		$data['created_at'] = Carbon::now();
@@ -37,7 +38,7 @@ class AdminSupplierController extends Controller
 		return view('admin.supplier.update', compact('supplier'));
 	}
 
-	public function update(Request $request, $id)
+	public function update(AdminSupplierRequest $request, $id)
 	{
 		$data = $request->except("_token");
 		Supplier::find($id)->update($data);
