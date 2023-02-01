@@ -35,12 +35,14 @@ class RequestRegister extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Dữ liệu không được để trống',
-            'email.required' => 'Dữ liệu không được để trống',
+            'name.required' => 'Tên tài khoản không được để trống',
+            'email.required' => 'Email không được để trống',
             'email.unique' => 'Dữ liệu đã tồn tại',
-            'phone.unique' => 'Dữ liệu đã tồn tại',
-            'phone.required' => 'Dữ liệu không được để trống',
-            'password.required' => 'Dữ liệu không được để trống'
+            'email.min' => 'Email phải lớn hơn hoặc bằng 3 ký tự',
+            'email.max' => 'Email phải nhỏ hơn hoặc bằng 190 ký tự',
+            'phone.required' => 'Số điện thoại không được để trống',
+            'phone.unique' => 'Số điện thoại đã tồn tại',
+            'password.required' => 'Mật khẩu không được để trống'
         ];
     }
 }

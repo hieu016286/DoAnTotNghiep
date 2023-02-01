@@ -31,6 +31,6 @@ class RegisterSuccess extends Mailable
     {
         return $this->view('emails.email_register')->with([
             'name' => $this->name
-        ]);
+        ])->subject('Đăng Ký Thành Công');
     }
 }

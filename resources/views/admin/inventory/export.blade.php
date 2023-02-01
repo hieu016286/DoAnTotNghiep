@@ -32,6 +32,7 @@
 								<th>ID</th>
 								<th>Sản phẩm</th>
 								<th>Số lượng</th>
+								<th>Giá bán</th>
 								<th>Tổng tiền</th>
 								<th>Ngày mua</th>
 							</tr>
@@ -45,10 +46,12 @@
 										<td><a href="">{{ $item->product->pro_name ?? "[N\A]" }}</a></td>
 										<td>{{ $item->od_qty }}</td>
 										<td>{{ number_format($item->od_price,0,',','.') }} VNĐ</td>
-										<td>{{ $item->created_at  }}</td>
+										<td>{{ number_format($item->od_price * $item->od_qty,0,',','.') }} VNĐ</td>
+										<td>{{ $item->created_at }}</td>
 									</tr>
                                     @php 
-                                        $sum += $item->od_price;
+//                                        $sum += $item->od_price;
+									$sum += $item->od_price * $item->od_qty
                                     @endphp
 								@endforeach
 							@endif

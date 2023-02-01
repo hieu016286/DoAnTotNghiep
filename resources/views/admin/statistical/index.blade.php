@@ -152,11 +152,11 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Info</th>
-                                    <th>Money</th>
-                                    <th>Account</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
+                                    <th>Thông tin</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Chức vụ</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian tạo</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -215,11 +215,11 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Ảnh</th>
                                 <!-- <th>Qty</th> -->
-                                <th>So luong Ban</th>
-                                <th>Price</th>
+                                <th>Số lượng bán</th>
+                                <th>Giá / sl</th>
                             </tr>
                             </thead>
                             <tbody>

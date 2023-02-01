@@ -12,7 +12,7 @@
                     <a itemprop="url" href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
                 </li>
                 <li>
-                    <a itemprop="url" href="#" title="sách "><span itemprop="title">Account</span></a>
+                    <a itemprop="url" href="#" title="Tài khoản"><span itemprop="title">Tài khoản</span></a>
                 </li>
 
                 <li>
@@ -25,29 +25,29 @@
             <form class="from_cart_register" action="" method="post" style="width: 500px;margin:0 auto;padding: 30px 0">
                 @csrf
                 <div class="form-group">
-                    <label for="name">Name <span class="cRed">(*)</span></label>
-                    <input name="name" id="name" type="text" value="{{  old('name') }}" class="form-control" placeholder="Bạn hãy vui lòng nhập tên vào đây !">
+                    <label for="name">Tên tài khoản <span class="cRed">(*)</span></label>
+                    <input name="name" id="name" type="text" value="{{ old('name') }}" class="form-control" placeholder="Tên.....">
                     @if ($errors->first('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>
                     @endif
                 </div>
                 <div class="form-group">
                     <label for="name">Email <span class="cRed">(*)</span></label>
-                    <input name="email" id="name" type="email" value="{{  old('email') }}" class="form-control" placeholder="Bạn hãy vui lòng nhập Email vào đây !">
+                    <input name="email" id="name" type="email" value="{{ old('email') }}" class="form-control" placeholder="Email.....">
                     @if ($errors->first('email'))
                         <span class="text-danger">{{ $errors->first('email') }}</span>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="phone">Password <span class="cRed">(*)</span></label>
-                    <input name="password" id="phone" type="password" placeholder="Bạn hãy vui lòng nhập mật khẩu !" class="form-control">
+                    <label for="phone">Mật khẩu <span class="cRed">(*)</span></label>
+                    <input name="password" id="phone" type="password" placeholder="Mật khẩu....." class="form-control">
                     @if ($errors->first('password'))
                         <span class="text-danger">{{ $errors->first('password') }}</span>
                     @endif
                 </div>
                 <div class="form-group">
                     <label for="phone">Điện thoại <span class="cRed">(*)</span></label>
-                    <input name="phone" id="phone" type="number" value="{{  old('phone') }}" placeholder="Bạn hãy vui lòng nhập số điện thoại !" class="form-control">
+                    <input name="phone" id="phone" type="number" value="{{ old('phone') }}" placeholder="SĐT....." class="form-control">
                     @if ($errors->first('phone'))
                         <span class="text-danger">{{ $errors->first('phone') }}</span>
                     @endif

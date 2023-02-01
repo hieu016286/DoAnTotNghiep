@@ -12,11 +12,11 @@
                     <a itemprop="url" href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
                 </li>
                 <li itemscope="" >
-                    <a itemprop="url" href="#" title="sách "><span itemprop="title">Account</span></a>
+                    <a itemprop="url" href="#" title="Tài khoản"><span itemprop="title">Tài khoản</span></a>
                 </li>
 
                 <li itemscope="">
-                    <a itemprop="url" href="#" title="Đồng hồ Diamond D"><span itemprop="title">Đăng nhập</span></a>
+                    <a itemprop="url" href="#" title="Đăng nhập"><span itemprop="title">Đăng nhập</span></a>
                 </li>
 
             </ul>
@@ -29,14 +29,14 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Email <span class="cRed">(*)</span></label>
-                    <input name="email" id="name" type="email" class="form-control" placeholder="Bạn hãy vui lòng nhập Email vào đây !">
+                    <input name="email" id="name" type="email" class="form-control" placeholder="Email.....">
                     @if ($errors->first('email'))
                         <span class="text-danger">{{ $errors->first('email') }}</span>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="phone">Password <span class="cRed">(*)</span></label>
-                    <input name="password" id="phone" type="password" placeholder="Bạn hãy vui lòng nhập mật khẩu !" class="form-control">
+                    <label for="phone">Mật khẩu <span class="cRed">(*)</span></label>
+                    <input name="password" id="phone" type="password" placeholder="Mật khẩu....." class="form-control">
                     @if ($errors->first('password'))
                         <span class="text-danger">{{ $errors->first('password') }}</span>
                     @endif

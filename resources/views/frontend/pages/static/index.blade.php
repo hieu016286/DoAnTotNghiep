@@ -9,9 +9,8 @@
                 <li >
                     <a href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
                 </li>
-                
                 <li >
-                    <a href="javascript://" title="sách "><span itemprop="title">{{  $page->s_title ?? '' }}</span></a>
+                    <a href="javascript://" title="Chăm sóc khách hàng"><span itemprop="title">{{  $page->s_title ?? 'Chăm sóc khách hàng' }}</span></a>
                 </li>
             </ul>
         </div>
