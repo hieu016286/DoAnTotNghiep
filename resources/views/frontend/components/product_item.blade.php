@@ -7,7 +7,7 @@
          title="{{  $product->pro_name }}" class="title">
             <h3>{{  $product->pro_name }}</h3>
         </a>
-        @if ($product->pro_number <= 0)
+        @if (\App\Models\Product::find($product->id)->pro_number <= 0)
             <p style="position: absolute;right: 10px;color: #E91E63;font-weight: bold;">Tạm hết hàng</p>
         @endif
         <p class="rating">

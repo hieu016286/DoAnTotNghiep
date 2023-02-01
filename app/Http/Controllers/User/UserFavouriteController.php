@@ -18,7 +18,7 @@ class UserFavouriteController extends Controller
     {
         $userID = Auth::id();
         $products = Product::with('category')
-            ->whereHas('favourite', function($query) use ($userID){
+            ->whereHas('users', function($query) use ($userID){
             $query->where('uf_user_id', $userID);
         })->select('id','pro_name','pro_slug','pro_sale','pro_avatar','pro_price','pro_category_id')
             ->paginate(10);

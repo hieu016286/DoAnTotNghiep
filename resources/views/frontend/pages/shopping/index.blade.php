@@ -54,7 +54,7 @@
                                     </td>
                                     <td>
                                         <div class="qty_number">
-                                            <input type="number"  min="1" class="input_quantity" disabled name="quantity_14692" value="{{  $item->qty }}" id="">
+                                            <input type="number" min="1" class="input_quantity" disabled name="quantity_14692" value="{{  $item->qty }}" id="">
                                             <p data-price="{{ $item->price }}" data-url="{{  route('ajax_get.shopping.update', $key) }}" data-id-product="{{  $item->id }}">
                                                 <span class="js-increase">+</span>
                                                 <span class="js-reduction">-</span>

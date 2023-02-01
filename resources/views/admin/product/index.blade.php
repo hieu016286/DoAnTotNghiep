@@ -84,10 +84,10 @@
                                             <td>
                                                 @if ($product->pro_sale)
                                                     <span style="text-decoration: line-through;">{{ number_format($product->pro_price,0,',','.') }} vnđ</span><br>
-                                                    <!-- @php 
+                                                    <!-- @php
                                                         $price = ((100 - $product->pro_sale) * $product->pro_price)  /  100 ;
                                                     @endphp -->
-                                                    <span>{{ number_format(($product->pro_price-$product->pro_sale),0,',','.') }} vnđ</span>
+                                                    <span>{{ number_format($price,0,',','.') }} vnđ</span>
                                                 @else 
                                                     {{ number_format($product->pro_price,0,',','.') }} vnđ
                                                 @endif
