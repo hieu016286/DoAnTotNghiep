@@ -5,7 +5,7 @@
         <h1>Thêm mới danh mục sản phẩm</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.category.index') }}"> Danh mục</a></li>
+            <li><a href="{{ route('admin.category.index') }}"> Danh mục</a></li>
             <li class="active"> Thêm mới </li>
         </ol>
     </section>
@@ -20,8 +20,8 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('c_name') ? 'has-error' : '' }}">
-                                <label for="name">Tên <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="c_name"  placeholder="Name ...">
+                                <label for="name">Tiêu Đề <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" name="c_name" placeholder="Tiêu đề ...">
                                 @if ($errors->first('c_name'))
                                     <span class="text-danger">{{ $errors->first('c_name') }}</span>
                                 @endif
@@ -29,11 +29,11 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group">
-                                <label for="name">Chọn đối tượng cha <span class="text-danger">(*)</span></label>
+                                <label for="name">Chọn Đối Tượng Cha <span class="text-danger">(*)</span></label>
                                 <select name="c_parent_id" class="form-control" id="">
                                     <option value="0">__Hiển thị ngoài__</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">
+                                        <option value="{{ $category->id }}" {{ old('c_parent_id') == $category->id ? "selected='selected'" : ""}}>
 											<?php $str = '' ;for($i = 0; $i < $category->level; $i ++){ echo $str; $str .= '-- '; }?>
                                             {{ $category->c_name }}
                                         </option>

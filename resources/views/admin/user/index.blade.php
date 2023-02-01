@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li><a href="{{  route('admin.user.index') }}"> Khách hàng</a></li>
-            <li class="active"> List </li>
+            <li class="active"> Danh sách </li>
         </ol>
     </section>
     <!-- Main content -->
@@ -20,7 +20,7 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 10px">Stt</th>
+                                    <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
                                     <th>Tên</th>
                                     <th>Email</th>

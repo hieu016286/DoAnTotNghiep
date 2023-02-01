@@ -5,8 +5,8 @@
         <h1>Quản lý đơn hàng</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.transaction.index') }}"> Transaction</a></li>
-            <li class="active"> List </li>
+            <li><a href="{{ route('admin.transaction.index') }}"> Đơn hàng</a></li>
+            <li class="active"> Danh sách </li>
         </ol>
     </section>
     <!-- Main content -->
@@ -31,7 +31,7 @@
                             <option value="3" {{ Request::get('status') == 3 ? "selected='selected'" : "" }}>Đã bàn giao</option>
                             <option value="-1" {{ Request::get('status') == -1 ? "selected='selected'" : "" }}>Huỷ bỏ</option>
                         </select>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Search</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Tìm kiếm</button>
                         <button type="submit" name="export" value="true" class="btn btn-info">
                             <i class="fa fa-save"></i> Export
                         </button>
@@ -45,13 +45,13 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th style="width: 30%">Info</th>
-                                    <th>Money</th>
-                                    <th>Account</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th style="width: 30%">Thông tin</th>
+                                    <th>Giá tiền</th>
+                                    <th>Chức vụ</th>
+                                    <th>Loại</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian tạo</th>
+                                    <th>Hành động</th>
                                 </tr>
                                 @if (isset($transactions))
                                     @foreach($transactions as $key => $transaction)
@@ -83,26 +83,26 @@
                                                     {{ $transaction->getStatus($transaction->tst_status)['name'] }}
                                                 </span>
                                             </td>
-                                            <td>{{  $transaction->created_at }}</td>
+                                            <td>{{ $transaction->created_at }}</td>
                                             <td>
-                                                <a data-id="{{  $transaction->id }}" href="{{ route('ajax.admin.transaction.detail', $transaction->id) }}" class="btn btn-xs btn-info js-preview-transaction"><i class="fa fa-eye"></i> View</a>
+                                                <a data-id="{{ $transaction->id }}" href="{{ route('ajax.admin.transaction.detail', $transaction->id) }}" class="btn btn-xs btn-info js-preview-transaction"><i class="fa fa-eye"></i> Xem</a>
 
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-success btn-xs">Action</button>
+                                                    <button type="button" class="btn btn-success btn-xs">Hành động</button>
                                                     <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                         <span class="caret"></span>
                                                         <span class="sr-only">Toggle Dropdown</span>
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu">
                                                         <li>
-                                                            <a href="{{  route('admin.transaction.delete', $transaction->id) }}" class="js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                            <a href="{{ route('admin.transaction.delete', $transaction->id) }}" class="js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                                         </li>
                                                         <li class="divider"></li>
                                                         <li>
-                                                            <a href="{{ route('admin.action.transaction',['process', $transaction->id]) }}" ><i class="fa fa-ban"></i> Đang bàn giao</a>
+                                                            <a href="{{ route('admin.action.transaction',['process', $transaction->id]) }}" ><i class="fa fa-gears"></i> Đang bàn giao</a>
                                                         </li>
                                                         <li>
-                                                            <a href="{{ route('admin.action.transaction',['success', $transaction->id]) }}" ><i class="fa fa-ban"></i> Đã bàn giao</a>
+                                                            <a href="{{ route('admin.action.transaction',['success', $transaction->id]) }}" ><i class="fa fa-check"></i> Đã bàn giao</a>
                                                         </li>
                                                         <li>
                                                             <a href="{{ route('admin.action.transaction',['cancel', $transaction->id]) }}" ><i class="fa fa-ban"></i> Huỷ</a>
@@ -142,7 +142,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>
                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
             </div>

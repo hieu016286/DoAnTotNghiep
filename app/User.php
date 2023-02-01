@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Product;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -30,4 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function products() {
+        return $this->belongsToMany(Product::class,'user_favourite', 'uf_user_id', 'uf_product_id');
+    }
 }   

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserFavouriteController extends Controller
 {
@@ -14,7 +16,7 @@ class UserFavouriteController extends Controller
     }
     public function index()
     {
-        $userID = \Auth::id();
+        $userID = Auth::id();
         $products = Product::with('category')
             ->whereHas('favourite', function($query) use ($userID){
             $query->where('uf_user_id', $userID);
@@ -27,7 +29,8 @@ class UserFavouriteController extends Controller
 
     /**
      * Thêm sản phẩm yêu thích
-     * */
+     *
+     */
     public function addFavourite(Request $request, $id)
     {
         if ($request->ajax()) {
@@ -36,16 +39,16 @@ class UserFavouriteController extends Controller
             $product = Product::find($id);
             if (!$product) return response(['messages' => 'Không tồn tại sản phẩm']);
 
-            $messages = 'Thêm yêu thích thành công';
+            $messages = 'Thêm Yêu Thích Thành Công';
+
             try {
-                \DB::table('user_favourite')
+                DB::table('user_favourite')
                 ->insert([
                     'uf_product_id' => $id,
-                    'uf_user_id'    => \Auth::id()
+                    'uf_user_id' => Auth::id()
                 ]);
-
             } catch (\Exception $e) {
-                $messages = 'Sản phẩm này đã được yêu thích'; 
+                $messages = 'Sản Phẩm Này Đã Được Yêu Thích';
             }
 
             return response(['messages' => $messages]);

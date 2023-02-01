@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminRequestCreateInvoiceEntered;
 use App\Models\InvoiceEntered;
 use App\Models\Menu;
 use App\Models\Product;
@@ -37,12 +38,8 @@ class AdminInvoiceEnteredController extends Controller
         return view('admin.invoice_entered.create', compact('suppliere','products'));
     }
 
-    public function store(Request $request)
+    public function store(AdminRequestCreateInvoiceEntered $request)
     {
-        $request->validate([
-            'ie_number' => 'min:0',
-            'ie_money' => 'min:0',
-        ]);
         $data1 = new InvoiceEntered();
         $data1['created_at'] =  Carbon::now();
         $tongtien = $request->ie_number * $request->ie_money;
@@ -67,7 +64,6 @@ class AdminInvoiceEnteredController extends Controller
             $data1['ie_the_advance'] = $thanhtoan;
             $sodu = 0;
         }
-        
         $data1->save();
         $products->save();
         $history = new Import_histories();
@@ -85,6 +81,9 @@ class AdminInvoiceEnteredController extends Controller
             $data2['ie_total_money'] = $tongtien;
             $data2['ie_suppliere'] = $request->ie_suppliere;
             $data2['ie_product_id'] = $request->ie_product_id2;
+            $products2 = Product::find($request->ie_product_id2);
+            $products2['pro_number_import'] = $products2->pro_number_import + $request->ie_number2;
+            $products2['pro_number'] = $products2->pro_number + $request->ie_number2;
             $data2['ie_number_sold'] = 0;
             $data2['ie_money'] = $request->ie_money2;
             $data2['ie_status'] = 0;
@@ -100,17 +99,22 @@ class AdminInvoiceEnteredController extends Controller
                 $sodu2 = 0;
             }
             $data2->save();
+            $products2->save();
             $history2 = new Import_histories();
             $history['id_invoice'] = $data2->id;
             $history['thanhtoan'] = $data2->ie_the_advance;
             $history2->save();
-            if($checkProduct3 != 'none'){
+
+            if($checkProduct3 != 'none') {
                 $data3 = new InvoiceEntered();
                 $data3['created_at'] =  Carbon::now();
                 $tongtien = $request->ie_number3 * $request->ie_money3;
                 $data3['ie_total_money'] = $tongtien;
                 $data3['ie_suppliere'] = $request->ie_suppliere;
                 $data3['ie_product_id'] = $request->ie_product_id3;
+                $products3 = Product::find($request->ie_product_id3);
+                $products3['pro_number_import'] = $products3->pro_number_import + $request->ie_number3;
+                $products3['pro_number'] = $products3->pro_number + $request->ie_number3;
                 $data3['ie_number_sold'] = 0;
                 $data3['ie_money'] = $request->ie_money3;
                 $data3['ie_status'] = 0;
@@ -124,13 +128,14 @@ class AdminInvoiceEnteredController extends Controller
                     $data3['ie_the_advance'] = $sodu2;
                 }
                 $data3->save();
+                $products3->save();
                 $history3 = new Import_histories();
                 $history['id_invoice'] = $data3->id;
                 $history3['thanhtoan'] = $data3->ie_the_advance;
                 $history3->save();
             }
         }
-       
+
         return redirect()->back()->with('success', 'Thêm thành công dữ liệu');
     }
 

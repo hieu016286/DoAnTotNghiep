@@ -2,11 +2,11 @@
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Cập nhật thông tin</h1>
+        <h1>Chỉnh sửa thông tin</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.attribute.index') }}"> Thông tin</a></li>
-            <li class="active"> Sửa </li>
+            <li><a href="{{ route('admin.attribute.index') }}"> Thông tin</a></li>
+            <li class="active"> Chỉnh sửa </li>
         </ol>
     </section>
     <!-- Main content -->
@@ -20,8 +20,8 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('atb_name') ? 'has-error' : '' }}">
-                                <label for="name">Tên <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" value="{{  $attribute->atb_name }}" name="atb_name"  placeholder="Name ...">
+                                <label for="name">Tiêu Đề <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" value="{{ $attribute->atb_name }}" name="atb_name" placeholder="Tiêu đề ...">
                                 @if ($errors->first('atb_name'))
                                     <span class="text-danger">{{ $errors->first('atb_name') }}</span>
                                 @endif
@@ -29,10 +29,10 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('atb_type') ? 'has-error' : '' }}">
-                                <label for="name">Nhóm <span class="text-danger">(*)</span></label>
+                                <label for="name">Loại <span class="text-danger">(*)</span></label>
                                 <select class="form-control" name="atb_type">
                                     @foreach($attribute_type as $key => $type)
-                                        <option value="{{ $key }}" {{ $attribute->atb_type == $key ? "selected='selected'" : ""}}>{{ $type['name'] }}</option>
+                                        <option value="{{ $key }}" {{ ($attribute->atb_type == $key) ? "selected='selected'" : ""}}>{{ $type['name'] }}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->first('atb_type'))
@@ -42,11 +42,11 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group  {{ $errors->first('atb_category_id') ? 'has-error' : '' }}">
-                                <label for="name">Danh mục <span class="text-danger">(*)</span></label>
+                                <label for="name">Danh Mục <span class="text-danger">(*)</span></label>
                                 <select class="form-control" name="atb_category_id">
                                     @foreach($categories as $item)
                                         <option value="{{ $item->id }}"
-                                                {{ $attribute->atb_category_id == $item->id ? "selected='selected'"  : '' }}>{{ $item->c_name }}</option>
+                                                {{ ($attribute->atb_category_id == $item->id) ? "selected='selected'" : ""}}>{{ $item->c_name }}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->first('atb_category_id'))

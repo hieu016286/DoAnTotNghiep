@@ -31,4 +31,18 @@ class AdminRequestProduct extends FormRequest
             'pro_content' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'pro_name.required' => 'Tên sản phẩm không được để trống',
+            'pro_name.unique' => 'Tên sản phẩm này đã tồn tại',
+            'pro_name.max' => 'Tên sản phẩm không được quá 190 ký tự',
+            'pro_name.min' => 'Tên sản phẩm phải nhiều hơn 3 ký tự',
+            'pro_price.required' => 'Giá sản phẩm không được để trống',
+            'pro_description.required' => 'Mô tả không được để trống',
+            'pro_category_id.required' => 'Danh mục không được để trống',
+            'pro_content.required' => 'Nội dung không được để trống'
+        ];
+    }
 }

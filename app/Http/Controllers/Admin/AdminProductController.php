@@ -57,7 +57,7 @@ class AdminProductController extends Controller
 		$data['preview'] = $request->preview;
 		$data['pro_slug'] = Str::slug($request->pro_name);
 		$data['pro_number_import'] = 0;
-		$data['pro_sale'] = $request->pro_sale;
+		$data['pro_sale'] = $request->pro_sale ?? 0;
 		$data['created_at'] = Carbon::now();
 		if ($request->pro_sale) {
 			$data['pro_sale'] = $request->pro_sale;

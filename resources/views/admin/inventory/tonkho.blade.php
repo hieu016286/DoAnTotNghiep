@@ -2,10 +2,10 @@
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
-	<h1>Hàng tồn kho</h1>
+	<h1>Quản lý tồn kho</h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-		<li><a href="{{  route('admin.product.index') }}"> Tồn kho</a></li>
+		<li><a href=""> Tồn kho</a></li>
 		<li class="active"> Danh sách </li>
 	</ol>
 </section>
@@ -17,7 +17,7 @@
 			<div class="box-title">
 				<form class="form-inline">
 					<input type="text" class="form-control" value="{{ Request::get('id') }}" name="id" placeholder="ID">
-					<input type="text" class="form-control" value="{{ Request::get('name') }}" name="name" placeholder="Name ...">
+					<input type="text" class="form-control" value="{{ Request::get('name') }}" name="name" placeholder="Tên ...">
 					<select name="category" class="form-control">
 						<option value="0">Danh mục</option>
 						@foreach($categories as $category)

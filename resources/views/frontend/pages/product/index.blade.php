@@ -28,7 +28,7 @@
                 @endif
                 {{-- {{  dd($products) }} --}}
                 <div class="order-tab">
-                    <span class="total-prod">Tổng số: {{ $products->total() }} sản phẩm Tính năng</span>
+                    <span class="total-prod">Tổng số: {{ $products->total() }} sản phẩm</span>
                     <div class="sort">
                         <div class="item">
                             <span class="title js-show-sort">Sắp xếp <i class="fa fa-caret-down"></i></span>

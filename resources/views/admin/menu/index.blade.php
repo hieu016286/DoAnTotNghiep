@@ -5,7 +5,7 @@
         <h1>Quản lý menu</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.menu.index') }}"> Menu</a></li>
+            <li><a href="{{ route('admin.menu.index') }}"> Menu</a></li>
             <li class="active"> Danh sách </li>
         </ol>
     </section>
@@ -23,13 +23,13 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 10px">Stt</th>
+                                    <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th>Tên</th>
+                                    <th>Tiêu đề</th>
 {{--                                    <th>Ảnh</th>--}}
                                     <th>Tình trạng</th>
                                     <th>Hot</th>
-                                    <th>Thời gian</th>
+                                    <th>Thời gian tạo</th>
                                     <th>Hành động</th>
                                 </tr>
                                 @if ($menus)
@@ -55,10 +55,10 @@
                                                     <a href="{{ route('admin.menu.hot', $menu->id) }}" class="label label-default">Không</a>
                                                 @endif
                                             </td>
-                                            <td>{{  $menu->created_at }}</td>
+                                            <td>{{ $menu->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.menu.update', $menu->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
-                                                <a href="{{  route('admin.menu.delete', $menu->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
+                                                <a href="{{ route('admin.menu.update', $menu->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Chỉnh sửa</a>
+                                                <a href="{{ route('admin.menu.delete', $menu->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

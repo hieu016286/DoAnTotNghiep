@@ -727,8 +727,7 @@ CREATE TABLE `user_favourite` (
 -- Dumping data for table `user_favourite`
 --
 
-INSERT INTO `user_favourite` (`id`, `uf_product_id`, `uf_user_id`) VALUES
-(0, 15, 8);
+
 
 --
 -- Indexes for dumped tables
@@ -879,7 +878,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_favourite`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_favourite_uf_product_id_uf_user_id_unique` (`uf_product_id`,`uf_user_id`);
+  ADD UNIQUE KEY `user_favourite_uf_product_id_uf_user_id_unique` (`uf_product_id`,`uf_user_id`),
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for dumped tables

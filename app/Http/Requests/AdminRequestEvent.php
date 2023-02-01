@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminRequestMenu extends FormRequest
+class AdminRequestEvent extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,16 @@ class AdminRequestMenu extends FormRequest
     public function rules()
     {
         return [
-            'mn_name' => 'required|max:190|min:3|unique:menus,mn_name,'.$this->id
+            'e_name' => 'required',
+            'e_link' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'mn_name.required' => 'Tiêu đề không được để trống',
-            'mn_name.unique' => 'Tiêu đề này đã tồn tại',
-            'mn_name.max' => 'Tiêu đề không quá 190 ký tự',
-            'mn_name.min' => 'Tiêu đề phải nhiều hơn 3 ký tự'
+            'e_name.required' => 'Tiêu đề không được để trống',
+            'e_link.required' => 'Đường dẫn không được để trống'
         ];
     }
 }

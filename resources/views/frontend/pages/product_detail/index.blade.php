@@ -72,25 +72,29 @@
                                     <span>Hotline: 1800.6005</span>
                                 </a>
                                 <a href="{{ route('ajax_get.user.add_favourite', $product->id) }}"
-                                   title="Thêm sản phẩm yêu thích"
                                    class="muatragop  {{ !\Auth::id() ? 'js-show-login' : 'js-add-favourite' }}">
-                                    <span>Yêu thích</span>
-                                    <span>Sản phẩm</span>
+                                    @if(collect($product->users)->firstWhere('id', \Auth::id()))
+                                        <span>Đã Yêu thích</span>
+                                    @else
+                                        <span>Yêu thích</span>
+                                    @endif
+                                    <span style="text-transform: uppercase">Sản phẩm</span>
                                 </a>
                             </div>
                             <div class="infomation">
-                                <h2 class="infomation__title" style="font-weight: bold">Mô tả ngắn</h2>
+                                <h2 class="infomation__title" style="font-weight: bold">Mô Tả Ngắn</h2>
                                 <div class="infomation__group">
                                     {!! $product->pro_description !!}
                                 </div>
-                                <h2 class="infomation__title" style="font-weight: bold">Thông tin</h2>
+                                <br>
+                                <h2 class="infomation__title" style="font-weight: bold">Thông Tin</h2>
                                 <div class="infomation__group">
 
                                     <div class="item">
-                                        <p class="text1">Danh mục:</p>
+                                        <p class="text1">Danh mục :</p>
                                         <h3 class="text2">
                                             @if (isset($product->category->c_name))
-                                                <a href="{{  route('get.category.list', $product->category->c_slug).'-'.$product->pro_category_id }}">{{ $product->category->c_name }}</a>
+                                                <a style="text-decoration: underline; color: blue" href="{{  route('get.category.list', $product->category->c_slug).'-'.$product->pro_category_id }}">{{ $product->category->c_name }}</a>
                                             @else
                                                 "[N\A]"
                                             @endif
@@ -100,7 +104,7 @@
                                     <div class="item">
                                         @foreach($attr as  $k => $at)
                                             @if (in_array($k, $attributeOld))
-                                                <p class="text1">{{ $key }}:</p>
+                                                <p class="text1">{{ $key }} :</p>
                                                 <h3 class="text2">{{ $at['atb_name'] }}</h3>
                                             @endif
                                         @endforeach
@@ -196,5 +200,4 @@
 		var URL_CAPTCHA = '{{ route('ajax_post.captcha.resume') }}'
     </script>
     <script src="{{ asset('js/product_detail.js') }}" type="text/javascript"></script>
-
 @stop

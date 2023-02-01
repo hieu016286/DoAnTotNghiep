@@ -5,7 +5,7 @@
         <h1>Quản lý danh mục sản phẩm</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.category.index') }}"> Danh mục</a></li>
+            <li><a href="{{ route('admin.category.index') }}"> Danh mục</a></li>
             <li class="active"> Danh sách </li>
         </ol>
     </section>
@@ -25,11 +25,11 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th>Tên</th>
+                                    <th>Tiêu đề</th>
                                     <th>Ảnh</th>
                                     <th>Tình trạng</th>
                                     <th>Hot</th>
-                                    <th>Thời gian thêm</th>
+                                    <th>Thời gian tạo</th>
                                     <th>Hành động</th>
                                 </tr>
                                 @if ($categories)
@@ -56,10 +56,10 @@
                                                     <a href="{{ route('admin.category.hot', $category->id) }}" class="label label-default">Không</a>
                                                 @endif
                                             </td>
-                                            <td>{{  $category->created_at }}</td>
+                                            <td>{{ $category->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.category.update', $category->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
-                                                <a href="{{  route('admin.category.delete', $category->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
+                                                <a href="{{ route('admin.category.update', $category->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Chỉnh sửa</a>
+                                                <a href="{{ route('admin.category.delete', $category->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -24,10 +24,10 @@ class RequestRegister extends FormRequest
     public function rules()
     {
         return [
-            'email'     => 'required|max:190|min:3|unique:users,email,'.$this->id,
-            'name'      => 'required',
-            'phone'     => 'required|unique:users,phone,'.$this->id,
-            'password'  => 'required',
+            'name' => 'required',
+            'email' => 'required|max:190|min:3|unique:users,email,'.$this->id,
+            'phone' => 'required|unique:users,phone,'.$this->id,
+            'password' => 'required',
 //            'g-recaptcha-response' => 'required|captcha'
         ];
     }
@@ -35,12 +35,12 @@ class RequestRegister extends FormRequest
     public function messages()
     {
         return [
-            'name.required'         => 'Dữ liệu không được để trống',
-            'email.required'         => 'Dữ liệu không được để trống',
-            'email.unique'           => 'Dữ liệu đã tồn tại',
-            'phone.unique'           => 'Dữ liệu đã tồn tại',
-            'phone.required'         => 'Dữ liệu không được để trống',
-            'password.required'      => 'Dữ liệu không được để trống',
+            'name.required' => 'Dữ liệu không được để trống',
+            'email.required' => 'Dữ liệu không được để trống',
+            'email.unique' => 'Dữ liệu đã tồn tại',
+            'phone.unique' => 'Dữ liệu đã tồn tại',
+            'phone.required' => 'Dữ liệu không được để trống',
+            'password.required' => 'Dữ liệu không được để trống'
         ];
     }
 }

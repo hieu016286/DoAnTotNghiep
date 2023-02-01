@@ -37,7 +37,7 @@ class Product extends Model
         return $this->belongsToMany(Attribute::class,'products_attributes','pa_product_id','pa_attribute_id');
     }
 
-    public function favourite()
+    public function users()
     {
         return $this->belongsToMany(User::class,'user_favourite','uf_product_id','uf_user_id');
     }
