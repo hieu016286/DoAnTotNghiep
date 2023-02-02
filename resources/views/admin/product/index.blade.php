@@ -1,4 +1,11 @@
 @extends('layouts.app_master_admin')
+@push("style")
+    <style>
+        .btn-search {
+            background-color: pink
+        }
+    </style>
+@endpush
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -28,7 +35,7 @@
                             @endforeach
                         </select>
 
-                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Tìm kiếm</button>
+                        <button type="submit" class="btn btn-success btn-search"><i class="fa fa-search"></i> Tìm kiếm</button>
                         {{--<button type="submit" name="export" value="true" class="btn btn-info">--}}
                             {{--<i class="fa fa-save"></i> Xuất file--}}
                         {{--</button>--}}

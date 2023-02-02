@@ -1,4 +1,4 @@
-<section class="top-header desktop">
+<section class="top-header desktop" style="background-color: #00e600;">
     <div class="container">
         <div class="content">
             <div class="left">
@@ -38,12 +38,12 @@
 </section>
 
 <div class="commonTop" style="position: unset !important;">
-    <div id="headers" >
+    <div id="headers" style="background-color: #4dff4d;">
         <div class="container header-wrapper">
             <!--Thay đổi-->
             <div class="logo">
                 <a href="{{  route('get.home') }}" class="desktop">
-                    <img src="{{ isset(Auth::user()->avatar) ? pare_url_file(Auth::user()->avatar) : asset('images/logo_halo.png') }}" style="height: 35px;" alt="Home">
+                    <img src="{{ isset(Auth::user()->avatar) ? pare_url_file(Auth::user()->avatar) : asset('images/logo_gearshop.jpg') }}" style="height: 50px;" width="150" alt="Home">
                 </a>
                 <span class="menu js-menu-cate"><i class="fa fa-list-ul"></i> </span>
             </div>

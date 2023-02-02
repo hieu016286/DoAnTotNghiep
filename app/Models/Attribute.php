@@ -11,19 +11,19 @@ class Attribute extends Model
 
     public $type = [
         1 => [
-            'name' => "Đĩa Game",
+            'name' => "Linh Kiện PC",
             'class' => 'label label-info'
         ],
         2 => [
-            'name' => 'Tay cầm',
+            'name' => 'Phụ Kiện',
             'class' => 'label label-default' 
         ],
 		3 => [
-			'name' => 'Thẻ game',
+			'name' => 'Bàn Ghế PC',
 			'class' => 'label label-primary'
 		],
 		4 => [
-			'name' => 'Công nghệ',
+			'name' => 'Phụ Kiện Khác',
 			'class' => 'label label-danger'
 		],
 		5 => [

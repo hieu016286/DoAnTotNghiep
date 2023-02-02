@@ -28,6 +28,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        .custom-logo {
+            background-color: #b3ffb3
+        }
+        .custom-navbar {
+            background-color: #ffccff !important
+        }
+    </style>   
+    @stack("style")
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -39,10 +48,10 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>T</b>M</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b style="font-family: Courier New;">{{ get_data_user('admins','name') }}</b></span>
+                <span class="logo-lg custom-logo"><b style="font-family: Courier New;">{{ get_data_user('admins','name') }}</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top" >
+            <nav class="navbar navbar-static-top custom-navbar" >
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>

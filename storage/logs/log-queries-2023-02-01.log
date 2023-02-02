@@ -1,0 +1,17 @@
+[2023-02-02 01:12:55] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"161.81 ms","bindings":[0],"url":"http://doan.abc"} 
+[2023-02-02 01:12:55] local.DEBUG: select `id`, `mn_name`, `mn_slug` from `menus` {"time":"32.94 ms","bindings":[],"url":"http://doan.abc"} 
+[2023-02-02 01:13:33] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"2.9 ms","bindings":[0],"url":"http://doan.abc"} 
+[2023-02-02 01:13:53] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"2.86 ms","bindings":[0],"url":"http://doan.abc"} 
+[2023-02-02 01:14:10] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"2.84 ms","bindings":[0],"url":"http://doan.abc"} 
+[2023-02-02 01:14:15] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"2.65 ms","bindings":[0],"url":"http://127.0.0.1:8000"} 
+[2023-02-02 01:14:16] local.DEBUG: select `id`, `pro_name`, `pro_slug`, `pro_sale`, `pro_avatar`, `pro_number`, `pro_price`, `pro_review_total`, `pro_review_star` from `products` where `pro_active` = ? order by `id` desc limit 8 {"time":"39.55 ms","bindings":[1],"url":"http://127.0.0.1:8000"} 
+[2023-02-02 01:14:16] local.DEBUG: select * from `events` where `e_position_1` = ? limit 1 {"time":"51.79 ms","bindings":[1],"url":"http://127.0.0.1:8000"} 
+[2023-02-02 01:14:16] local.DEBUG: select * from `events` where `e_position_3` = ? limit 1 {"time":"2.57 ms","bindings":[1],"url":"http://127.0.0.1:8000"} 
+[2023-02-02 01:14:16] local.DEBUG: select * from `slides` where `sd_active` = ? order by `sd_sort` asc {"time":"37.84 ms","bindings":[1],"url":"http://127.0.0.1:8000"} 
+[2023-02-02 01:14:16] local.DEBUG: select `id`, `a_name`, `a_slug`, `a_description`, `a_avatar`, `created_at` from `articles` where (`a_active` = ? and `a_hot` = ?) order by `id` desc limit 4 {"time":"37 ms","bindings":[1,1],"url":"http://127.0.0.1:8000"} 
+[2023-02-02 01:14:16] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"2.09 ms","bindings":[0],"url":"http://127.0.0.1:8000/_debugbar/assets/stylesheets"} 
+[2023-02-02 01:14:25] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"22.73 ms","bindings":[0],"url":"http://127.0.0.1:8000"} 
+[2023-02-02 01:14:29] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"26.15 ms","bindings":[0],"url":"http://127.0.0.1:8000/account/login"} 
+[2023-02-02 01:14:32] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"24.25 ms","bindings":[0],"url":"http://127.0.0.1:8000/account/login"} 
+[2023-02-02 01:14:32] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"17.53 ms","bindings":[0],"url":"http://127.0.0.1:8000/account/login"} 
+[2023-02-02 01:14:35] local.DEBUG: select `id`, `c_name`, `c_slug`, `c_avatar`, `c_parent_id` from `categories` where `c_parent_id` = ? {"time":"20.38 ms","bindings":[0],"url":"http://127.0.0.1:8000"} 

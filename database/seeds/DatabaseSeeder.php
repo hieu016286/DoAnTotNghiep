@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
         DB::table('admins')->insert([
             [
                 'name' => 'Admin',
-                'email' => 'hieu016286@gmail.com',
+                'email' => 'vippr1239@gmail.com',
                 'password' => Hash::make('1qz2MxCid'),
-                'phone' => '0328698912',
+                'phone' => '0368136948',
                 'class' => 'D13CNPM4',
                 'address' => 'TP.HN',
                 'level' => Admin::LEVEL_ADMIN,
