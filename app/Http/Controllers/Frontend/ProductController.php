@@ -19,7 +19,6 @@ class ProductController extends FrontendController
                 $query->whereIn('pa_attribute_id', $paramAtbSearch);
             });
         }
-
         if ($name = $request->k) $products->where('pro_name','like','%'.$name.'%');
         if ($country = $request->country) $products->where('pro_country',$country);
         if ($request->price) {

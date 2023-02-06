@@ -5,8 +5,8 @@
         <h1>Hạn sử dụng</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.invoice_entered.index') }}"> NCC</a></li>
-            <li class="active"> List </li>
+            <li><a href="{{ route('admin.invoice_entered.index') }}"> Tồn kho</a></li>
+            <li class="active"> Hạn sử dụng </li>
         </ol>
     </section>
     <!-- Main content -->
@@ -35,8 +35,8 @@
                                 </tr>
                             </tbody>
                             @if (isset($invoiceEntered))
-                                    @foreach($invoiceEntered as  $key => $item)
-                                        @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) >0 && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)<=30)
+                                    @foreach($invoiceEntered as $key => $item)
+                                        @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) > 0 && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)<=30)
                                         <tr style="background-color:#c10606; color: white">
                                         @endif
                                         @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)<=0)
@@ -61,10 +61,10 @@
                                             <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                                             <td>{{date('d-m-Y',strtotime($item->NgaySX))}}</td>
                                             <td>{{date('d-m-Y',strtotime($item->Hansudung))}}</td>
-                                            @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) >0 && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)<=30)
+                                            @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) > 0 && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)<=30)
                                             <td><b>Sắp hết hạn - còn: {{(strtotime($item->Hansudung)-strtotime($datenow))/60/60/24}} ngày</b></td>
                                             @endif
-                                            @if((strtotime($item->Hansudung))< strtotime($datenow))
+                                            @if((strtotime($item->Hansudung)) < strtotime($datenow))
                                             <td><b>Đã hết hạn</b></td>
                                             @endif
                                             @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)>30)

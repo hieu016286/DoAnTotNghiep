@@ -251,7 +251,8 @@ class ShoppingCartController extends Controller
                 'type'    => 'success',
                 'message' => 'Thanh Toán Thành Công'
             ]);
-            return redirect('/')->with("thongbao","Thanh Toán Thành Công");       
+            return redirect('/');
+//                ->with("thongbao","Thanh Toán Thành Công");
         }
         \Session::flash('toastr', [
                 'type'    => 'success',

@@ -37,7 +37,7 @@
         <div class="item__content ratings">
             <ul>
                 @for ($i = 5 ; $i >0 ; $i--)
-                    <li class="{{ Request::get('rv') == $i ? "active" : "" }}">
+                    <li class=" js-param-search {{ Request::get('rv') == $i ? "active" : "" }}" data-param="rv={{ $i }}">
                         <a href="{{ request()->fullUrlWithQuery(['rv'=> $i]) }}">
                             <span>
                                 @for($j = 1 ; $j <= 5 ; $j ++)
@@ -50,5 +50,4 @@
             </ul>
         </div>
     </div>
-    
 </div>
