@@ -32,7 +32,7 @@ return [
     'google' => [
         'client_id' => '309381136382-c2ktkonu5puiie5ivfoscsk19eupjl8k.apps.googleusercontent.com',
         'client_secret' => 'kh5r_FCYzYSGmTT7s70Z6l2z',
-        'redirect' => 'http://127.0.0.1:8000/account/auth/google/callback',
+        'redirect' => 'ec2-13-213-35-83.ap-southeast-1.compute.amazonaws.com:8080/account/auth/google/callback',
     ],
 
 ];
