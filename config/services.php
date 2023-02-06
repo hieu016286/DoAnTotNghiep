@@ -30,9 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'google' => [
-        'client_id' => '309381136382-c2ktkonu5puiie5ivfoscsk19eupjl8k.apps.googleusercontent.com',
-        'client_secret' => 'kh5r_FCYzYSGmTT7s70Z6l2z',
-        'redirect' => 'ec2-13-213-35-83.ap-southeast-1.compute.amazonaws.com:8080/account/auth/google/callback',
+        'client_id' => '912272120401-uu44ihd3ju1j86hlm176bgbc5bni0s93.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'https://ec2-13-213-35-83.ap-southeast-1.compute.amazonaws.com:8080/account/auth/google/callback',
     ],
 
 ];
