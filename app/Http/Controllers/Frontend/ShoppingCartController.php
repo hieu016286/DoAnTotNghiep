@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\Transaction;
 use App\Models\Order;
 use App\Mail\TransactionSuccess;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -87,7 +88,6 @@ class ShoppingCartController extends Controller
 
     public function postPay(Request $request)
     {
-
 		Cache::forget('HOME.PRODUCT_PAY');
         $data = $request->except("_token");
         if (!\Auth::user()->id) {
@@ -120,6 +120,16 @@ class ShoppingCartController extends Controller
 
         // Lấy thông tin đơn hàng
         $shopping = \Cart::content();
+        $subTotal = \Cart::subtotal();
+
+        if(!$shopping->count()) {
+            \Session::flash('toastr', [
+                'type'    => 'error',
+                'message' => 'Giỏ hàng cần có ít nhất 1 sản phẩm'
+            ]);
+
+            return redirect()->back();
+        }
         $data['options']['orders'] = $shopping;
 
         $options['drive'] = $request->pay;
@@ -139,8 +149,8 @@ class ShoppingCartController extends Controller
             'message' => 'Đơn hàng của bạn đã được lưu'
         ]);
         
-        if($request->tst_type ==2){
-            $okk = Transaction::where('created_at',$data['created_at'])->firstOrFail(); 
+        if($request->tst_type ==2 ){
+            $okk = Transaction::where('created_at',$data['created_at'])->firstOrFail();
             $okk->tst_type = 2;
             $okk->save();
             $vnp_TmnCode = "GQ47CVPT"; //Mã website tại VNPAY 
@@ -192,9 +202,12 @@ class ShoppingCartController extends Controller
                 $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
                 $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
             }
+            if(Auth::user()->email) {
+                Mail::to(Auth::user()->email)->send(new TransactionSuccess($shopping, $subTotal));
+            }
             return redirect($vnp_Url);
         }
-       
+
         return redirect()->to('/');
     }
 

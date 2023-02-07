@@ -36,17 +36,17 @@
                             </tbody>
                             @if (isset($invoiceEntered))
                                     @foreach($invoiceEntered as $key => $item)
-                                        @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) > 0 && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)<=30)
+                                        @if(($item->Hansudung && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) > 0) && (((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) <= 30))
                                         <tr style="background-color:#c10606; color: white">
                                         @endif
-                                        @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)<=0)
+                                        @if(($item->Hansudung && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) <= 0))
                                         <tr style="background-color:#656363; color: white">
                                         @endif
                                             <td>{{ ($key + 1) }}</td>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->suppliere->sl_name ?? "[NA]" }}</td>
                                             <td>
-                                            @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)>30)
+                                            @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) > 30)
                                             <a  target="_blank"
                                                         href="{{ route('get.product.detail',($item->product->pro_slug ?? '') .'-'.$item->ie_product_id) }}">
                                                     {{ $item->product->pro_name ?? "[N\A]"}}</a>
@@ -58,16 +58,16 @@
                                             <td>{{ number_format($item->ie_money,0,',','.') }} VNĐ</td>
                                             <td>{{ number_format($item->ie_number)}}</td>
                                             <td>{{ number_format($item->ie_total_money,0,',','.') }} VNĐ</td>
-                                            <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-                                            <td>{{date('d-m-Y',strtotime($item->NgaySX))}}</td>
-                                            <td>{{date('d-m-Y',strtotime($item->Hansudung))}}</td>
-                                            @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) > 0 && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)<=30)
-                                            <td><b>Sắp hết hạn - còn: {{(strtotime($item->Hansudung)-strtotime($datenow))/60/60/24}} ngày</b></td>
+                                            <td>{{ $item->created_at ? date('d-m-Y',strtotime($item->created_at)) : '' }}</td>
+                                            <td>{{ $item->NgaySX ? date('d-m-Y',strtotime($item->NgaySX)) : '' }}</td>
+                                            <td>{{ $item->Hansudung ? date('d-m-Y',strtotime($item->Hansudung)) : '' }}</td>
+                                            @if(($item->Hansudung && ((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) > 0) && (((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) <= 30))
+                                            <td><b>Sắp hết hạn - còn: {{ (strtotime($item->Hansudung)-strtotime($datenow))/60/60/24 }} ngày</b></td>
                                             @endif
-                                            @if((strtotime($item->Hansudung)) < strtotime($datenow))
+                                            @if($item->Hansudung && ((strtotime($item->Hansudung)) < strtotime($datenow)))
                                             <td><b>Đã hết hạn</b></td>
                                             @endif
-                                            @if(((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24)>30)
+                                            @if((((strtotime($item->Hansudung)-strtotime($datenow))/60/60/24) > 30) || !$item->Hansudung)
                                             <td style="color: green"><b>Tốt</b></td>
                                             @endif
                                         </tr>

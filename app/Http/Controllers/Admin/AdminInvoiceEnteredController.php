@@ -53,8 +53,8 @@ class AdminInvoiceEnteredController extends Controller
         $data1['ie_money'] = $request->ie_money;
         $data1['ie_status'] = 0;
         $data1['ie_number'] = $request->ie_number;
-        $data1['NgaySX'] = $request->nsx;
-        $data1['Hansudung'] = $request->hsd;
+        $data1['NgaySX'] = $request->nsx ? Carbon::parse($request->nsx)->format('Y-m-d') : null;
+        $data1['Hansudung'] = $request->hsd ? Carbon::parse($request->hsd)->format('Y-m-d') : null;
         $thanhtoan = $request->ie_the_advance;
         if($thanhtoan >= $tongtien) {
             $data1['ie_the_advance'] = $tongtien;
@@ -88,8 +88,8 @@ class AdminInvoiceEnteredController extends Controller
             $data2['ie_money'] = $request->ie_money2;
             $data2['ie_status'] = 0;
             $data2['ie_number'] = $request->ie_number2;
-            $data2['NgaySX'] = $request->nsx2;
-            $data2['Hansudung'] = $request->hsd2;
+            $data2['NgaySX'] = $request->nsx2 ? Carbon::parse($request->nsx2)->format('Y-m-d') : null;
+            $data2['Hansudung'] = $request->hsd2 ? Carbon::parse($request->hsd2)->format('Y-m-d') : null;
             if($sodu >= $tongtien) {
                 $data2['ie_the_advance'] = $tongtien;
                 $sodu2 = $thanhtoan-$tongtien;
@@ -119,8 +119,8 @@ class AdminInvoiceEnteredController extends Controller
                 $data3['ie_money'] = $request->ie_money3;
                 $data3['ie_status'] = 0;
                 $data3['ie_number'] = $request->ie_number3;
-                $data3['NgaySX'] = $request->nsx3;
-                $data3['Hansudung'] = $request->hsd3;
+                $data3['NgaySX'] = $request->nsx3 ? Carbon::parse($request->nsx3)->format('Y-m-d') : null;
+                $data3['Hansudung'] = $request->hsd3 ? Carbon::parse($request->hsd3)->format('Y-m-d') : null;
                 if($sodu2 >= $tongtien) {
                     $data3['ie_the_advance'] = $tongtien;
                 }

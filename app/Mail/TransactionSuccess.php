@@ -18,10 +18,11 @@ class TransactionSuccess extends Mailable
      */
     
     private $transactions;
-
-    public function __construct($transactions)
+    private $subtotal;
+    public function __construct($transactions, $subtotal)
     {
         $this->transactions = $transactions;
+        $this->subtotal = $subtotal;
     }
 
     /**
@@ -34,6 +35,7 @@ class TransactionSuccess extends Mailable
         return $this->view('emails.email_success_transaction')
                 ->with([
                     'shopping' => $this->transactions,
+                    'subtotal' => $this->subtotal
                 ]);
     }
 }

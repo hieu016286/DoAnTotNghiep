@@ -19,27 +19,20 @@
                     </div>
                     <div style="width: 80%;float: right;">
                         <h4 style="margin:10px 0">{{ $item->name }}</h4>
-                        <p style="margin: 4px 0;font-size: 14px;">Giá <span>{{  number_format($item->price,0,',','.') }} đ</span></p>
-                        @if ($item->options->price_old)
-                            <p style="margin: 4px 0;font-size: 14px;">
-                                <span style="text-decoration: line-through;">{{  number_format(number_price($item->options->price_old),0,',','.') }} đ</span>
-                                <span class="sale">- {{ $item->options->sale }} %</span>
-                            </p>
-                        @endif
+                        <p style="margin: 4px 0;font-size: 14px;">Giá: <span>{{  number_format($item->price,0,',','.') }} đ</span></p>
+                        <p style="margin: 4px 0;font-size: 14px;">Số lượng: <span>{{ $item->qty }}</span></p>
+                        <p style="margin: 4px 0;font-size: 14px;">Tổng tiền: <span>{{ number_format($item->price * intval($item->qty),0,',','.') }} đ</span></p>
                     </div>
                     <div style="clear: both;"></div>
                 </div>
             @endforeach
-            <h2>Tổng tiền : <b>{{ \Cart::subtotal(0) }}</b></h2>
+            <h2>Tổng tiền tất cả sản phẩm : <b>{{ $subtotal }}</b></h2>
         </div>
         <div>
             <p>Đây là email tự động xin vui không không trả lời vào email này</p>
-            <p>Mời bạn <a href="{{ route('get.user.update_info') }}">click vào đây</a> để cập nhật thông tin cá nhân</p>
         </div>
     </div>
     <div style="background: #f4f5f5;box-sizing: border-box;padding: 15px">
-        <p style="margin:2px 0;color: #333">Email : phupt.humg.94@gmail.com</p>
-        <p style="margin:2px 0;color: #333">Phone : 0986420994</p>
-        <p style="margin:2px 0;color: #333">Face : <a href="https://www.facebook.com/TrungPhuNA">TrungPhuNa</a></p>
+        <p style="margin:2px 0;color: #333">Cảm ơn bạn đã tin dùng dịch vụ của HaloShop.</p>
     </div>
 </div>
