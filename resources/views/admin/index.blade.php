@@ -23,11 +23,11 @@
                 </div>
                 <div class="box-body">
                     <ul>
-                        <li>Họ Tên: {{ $admin->name }}</li>
-                        <li>Lớp : {{ $admin->class }}</li>
-                        <li>Số điện thoại : {{ $admin->phone }}</li>
-                        <li>Email : {{ $admin->email }}</li>
-                        <li>Địa chỉ : {{ $admin->address }}</li>
+                        <li>Họ Tên: Trần Trung Hiếu.</li>
+                        <li>Lớp : D13CNPM4.</li>
+                        <li>Số điện thoại : 0328698912.</li>
+                        <li>Email : hieu016286@gmail.com.</li>
+                        <li>Địa chỉ : Xuân Đỉnh - Bắc Từ Liêm - Hà Nội.</li>
                     </ul>
                 </div>
 

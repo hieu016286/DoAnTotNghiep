@@ -26,7 +26,7 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Thành viên</span>
+                        <span class="info-box-text">Khách hàng</span>
                         <span class="info-box-number">{{ $totalUsers }} <small><a href="{{ route('admin.user.index') }}">(Chi tiết)</a></small></span>
                     </div>
                     <!-- /.info-box-content -->
@@ -120,8 +120,6 @@
         <div class="col-sm-8">
             <figure class="highcharts-figure">
                 <div id="container2" data-list-day="{{ $listDay }}" data-money-default={{ $arrRevenueTransactionMonthDefault }} data-money={{ $arrRevenueTransactionMonth }}>
-
-                    
                 </div>
             </figure>
         </div>
@@ -281,7 +279,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer text-center">
-                    <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                    <a href="javascript:void(0)" class="uppercase">Xem tất cả sản phẩm</a>
                 </div>
                 <!-- /.box-footer -->
             </div>
@@ -317,7 +315,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer text-center">
-                    <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                    <a href="javascript:void(0)" class="uppercase">Xem tất cả sản phẩm</a>
                 </div>
                 <!-- /.box-footer -->
             </div>

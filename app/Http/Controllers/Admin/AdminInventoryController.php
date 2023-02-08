@@ -41,11 +41,18 @@ class AdminInventoryController extends Controller
 	public function getOutOfStock(Request $request)
 	{
 		$inventoryExport = Order::with('product');
-
         if ($request->time) {
             $time = $this->getStartEndTime($request->time, []);
             $inventoryExport->whereBetween('created_at', $time);
         }
+
+//        foreach($inventoryExport->orderByDesc('id')->get() as $inven) {
+//            $product = Product::where('id', $inven->product->id)->first();
+//            if($product) {
+//                $orderTotalQty = Order::where('od_product_id', $product->id)->get()->sum('od_qty');
+//                dd($product->invoice_entered()->orderBy('created_at', 'ASC')->get());
+//            }
+//        }
 
         $inventoryExport = $inventoryExport->orderByDesc('id')->paginate(20);
 

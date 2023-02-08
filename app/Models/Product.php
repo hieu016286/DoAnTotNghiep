@@ -41,4 +41,8 @@ class Product extends Model
     {
         return $this->belongsToMany(User::class,'user_favourite','uf_product_id','uf_user_id');
     }
+
+    public function invoice_entered() {
+        return $this->hasMany(InvoiceEntered::class, 'ie_product_id');
+    }
 }

@@ -29,8 +29,8 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                             <label for="exampleInputEmail1">Giảm Giá</label>
-                             <input type="number" min="0" max="100" name="pro_sale" value="{{ $product->pro_sale ?? old('pro_sale') }}" class="form-control" data-type="currency" placeholder="... VNĐ"
+                             <label for="exampleInputEmail1">Giảm Giá (%)</label>
+                             <input type="number" min="0" max="100" name="pro_sale" value="{{ $product->pro_sale ?? old('pro_sale') }}" class="form-control" data-type="currency" placeholder="... %"
                                     oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                         </div>
                     </div>

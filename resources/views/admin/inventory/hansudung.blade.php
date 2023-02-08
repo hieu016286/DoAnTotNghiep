@@ -27,7 +27,9 @@
                                     <th>Sản phẩm</th>
                                     <th>Số tiền</th>
                                     <th>Số lượng</th>
-                                    <th>Tổng tiền</th>
+                                    <th>Tổng tiền chi</th>
+                                    <th>Đã bán</th>
+                                    <th>Ước lượng lãi</th>
                                     <th>Ngày nhập hàng</th>
                                     <th>Ngày sản xuất</th>
                                     <th>Hạn sử dụng</th>
@@ -58,6 +60,8 @@
                                             <td>{{ number_format($item->ie_money,0,',','.') }} VNĐ</td>
                                             <td>{{ number_format($item->ie_number)}}</td>
                                             <td>{{ number_format($item->ie_total_money,0,',','.') }} VNĐ</td>
+                                            <td>{{ $item['daban'] }} / {{ $item->ie_number }}</td>
+                                            <td>{{ number_format(($item['giaban'] * $item['daban']) - ($item->ie_money * $item['daban']),0,',','.') }}</td>
                                             <td>{{ $item->created_at ? date('d-m-Y',strtotime($item->created_at)) : '' }}</td>
                                             <td>{{ $item->NgaySX ? date('d-m-Y',strtotime($item->NgaySX)) : '' }}</td>
                                             <td>{{ $item->Hansudung ? date('d-m-Y',strtotime($item->Hansudung)) : '' }}</td>

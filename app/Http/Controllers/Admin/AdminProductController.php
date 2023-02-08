@@ -57,7 +57,7 @@ class AdminProductController extends Controller
 		$data['preview'] = $request->preview;
 		$data['pro_slug'] = Str::slug($request->pro_name);
 		$data['pro_number_import'] = 0;
-		$data['pro_sale'] = $request->pro_sale ?? 0;
+		$data['pro_sale'] = $request->pro_sale ?? null;
 		$data['created_at'] = Carbon::now();
 		if ($request->pro_sale) {
 			$data['pro_sale'] = $request->pro_sale;
@@ -131,9 +131,7 @@ class AdminProductController extends Controller
 		$data['preview'] = $request->preview;
 		$data['pro_slug'] = Str::slug($request->pro_name);
 		$data['updated_at'] = Carbon::now();
-		if ($request->pro_sale) {
-			$data['pro_sale'] = $request->pro_sale;
-		}
+        $data['pro_sale'] = $request->pro_sale ?? null;
 		if ($request->pro_avatar) {
             if(check_image($product->pro_avatar))
                 remove_image($product->pro_avatar);

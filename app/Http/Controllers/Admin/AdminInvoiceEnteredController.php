@@ -25,6 +25,24 @@ class AdminInvoiceEnteredController extends Controller
     public function hansudung($id)
     {
         $invoiceEntered = InvoiceEntered::where('ie_product_id',$id)->get();
+        $product = Product::where('id', $id)->first();
+        if($product->pro_sale) {
+            $giaban = ((100 - $product->pro_sale) * $product->pro_price)  /  100;
+        } else {
+            $giaban = $product->product_price;
+        }
+        $orderProductQty = InvoiceEntered::where('ie_product_id',$id)->where('ie_number_sold', '>', 0)->first()->ie_number_sold;
+        foreach($invoiceEntered as $invoice) {
+            if($orderProductQty - $invoice->ie_number >= 0) {
+                $invoice['daban'] = $invoice->ie_number;
+            } else {
+                $invoice['daban'] = $orderProductQty;
+            }
+            $orderProductQty -= $invoice->ie_number;
+
+            $invoice['giaban'] = $giaban;
+        }
+
         $datenow = date('Y-m-d 00:00:00');
         return view('admin.inventory.hansudung', compact('invoiceEntered','datenow'));
     }
