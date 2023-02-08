@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminRequestCreateInvoiceEntered;
 use App\Models\InvoiceEntered;
 use App\Models\Menu;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Import_histories;
 use App\Models\Supplier;
@@ -31,18 +32,23 @@ class AdminInvoiceEnteredController extends Controller
         } else {
             $giaban = $product->product_price;
         }
-        $orderProductQty = InvoiceEntered::where('ie_product_id',$id)->where('ie_number_sold', '>', 0)->first()->ie_number_sold;
+        $orderProductQty = InvoiceEntered::where('ie_product_id',$id)->first()->ie_number_sold;
+        $orders = Order::where('od_product_id', $id)->get();
         foreach($invoiceEntered as $invoice) {
-            if($orderProductQty - $invoice->ie_number >= 0) {
-                $invoice['daban'] = $invoice->ie_number;
+            if($orderProductQty > 0) {
+                if($orderProductQty - $invoice->ie_number >= 0) {
+                    $invoice['daban'] = $invoice->ie_number;
+                } else {
+                    $invoice['daban'] = $orderProductQty;
+                }
+                $orderProductQty -= $invoice->ie_number;
             } else {
-                $invoice['daban'] = $orderProductQty;
+                $invoice['daban'] = 0;
             }
-            $orderProductQty -= $invoice->ie_number;
+
 
             $invoice['giaban'] = $giaban;
         }
-
         $datenow = date('Y-m-d 00:00:00');
         return view('admin.inventory.hansudung', compact('invoiceEntered','datenow'));
     }
