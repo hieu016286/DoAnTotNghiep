@@ -140,7 +140,7 @@ class ShoppingCartController extends Controller
         try{
             \Cart::destroy();
            $test =  new PayManager($data, $shopping, $options);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception){
             Log::error("[Errors pay shopping cart]" .$exception->getMessage());
         }
             
@@ -149,10 +149,7 @@ class ShoppingCartController extends Controller
             'message' => 'Đơn hàng của bạn đã được lưu'
         ]);
         
-        if($request->tst_type ==2 ){
-            $okk = Transaction::where('created_at',$data['created_at'])->firstOrFail();
-            $okk->tst_type = 2;
-            $okk->save();
+        if($request->tst_type == 2) {
             $vnp_TmnCode = "GQ47CVPT"; //Mã website tại VNPAY 
             $vnp_HashSecret = "HQWGOTZENLADYIGYPEEEOYCJZXXJBXQX"; //Chuỗi bí mật
             $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
@@ -197,15 +194,13 @@ class ShoppingCartController extends Controller
             }
 
             $vnp_Url = $vnp_Url . "?" . $query;
+
             if (isset($vnp_HashSecret)) {
                // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
                 $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
                 $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
             }
-            if(Auth::user()->email) {
-                Mail::to(Auth::user()->email)->send(new TransactionSuccess($shopping, $subTotal));
-            }
-            return redirect($vnp_Url);
+            return redirect($vnp_Url)->with('data', $data)->with('shopping', $shopping)->with('subtotal', $subTotal);
         }
 
         return redirect()->to('/');
@@ -259,13 +254,23 @@ class ShoppingCartController extends Controller
     }
     //Show ket qua thanh toan
     public function result_payment(Request $request){
-        if($request->vnp_ResponseCode){
+        if($request->vnp_ResponseCode == '00') {
+
+            $data = session()->get('data');
+            $shopping = session()->get('shopping');
+            $subTotal = session()->get('subtotal');
+            $okk = Transaction::where('created_at',$data['created_at'])->firstOrFail();
+            $okk->tst_type = 2;
+            $okk->save();
+            if(Auth::user()->email) {
+                Mail::to(Auth::user()->email)->send(new TransactionSuccess($shopping, $subTotal));
+            }
+            session()->forget(['data', 'shopping', 'subtotal']);
             \Session::flash('toastr', [
                 'type'    => 'success',
                 'message' => 'Thanh Toán Thành Công'
             ]);
             return redirect('/');
-//                ->with("thongbao","Thanh Toán Thành Công");
         }
         \Session::flash('toastr', [
                 'type'    => 'success',
