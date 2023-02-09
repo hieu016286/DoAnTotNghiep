@@ -3,6 +3,7 @@
 /public/uploads
 /public/storage
 /storage/*.key
+/storage/logs
 /vendor
 .idea
 .env

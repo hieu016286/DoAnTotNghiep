@@ -1,0 +1,21 @@
+name: Deploy Do An Application
+run-name: ${{ github.actor }} is deploy final project
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy SSH
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script_stop: false
+          script: |
+            cd DoAnTotNghiep
+            git pull origin develop
