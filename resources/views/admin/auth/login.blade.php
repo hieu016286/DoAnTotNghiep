@@ -28,29 +28,29 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="/">Login Hệ Thống Admin</a>
+                <a href="/">Đăng Nhập Hệ Thống</a>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
                 @if (session('thongbao'))
                     <div class="alert alert-info " style="background: red; text-align: center;">{{session('thongbao')}}</div>
                 @endif
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Đăng nhập để bắt đầu phiên của bạn</p>
                 @include('components.int_message')
                 <form action="" method="post">
                     @csrf
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" placeholder="Email...">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu...">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng Nhập</button>
                         </div>
                         <!-- /.col -->
                     </div>

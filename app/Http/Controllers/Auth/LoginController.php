@@ -68,10 +68,10 @@ class LoginController extends Controller
         } else {
             \Session::flash('toastr', [
                 'type'    => 'error',
-                'message' => 'Đăng xảy ra lỗi không thể đăng nhập'
+                'message' => 'Tài khoản hoặc mật khẩu không đúng'
             ]);
         }
-        return redirect()->back()->with("thongbao","Tài khoản mật khẩu không đúng");
+        return redirect()->back();
     }
 
     protected function logLogin()

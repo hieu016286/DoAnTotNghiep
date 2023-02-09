@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>{{ config('layouts.admin.title') }}</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ</a></li>
         </ol>
     </section>
     <section class="content">
