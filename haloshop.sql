@@ -708,9 +708,6 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `log_login`, `count_comment`, `address`, `avatar`, `remember_token`, `created_at`, `updated_at`, `google_id`) VALUES
-(23, 'Người dùng 1', 'user1@gmail.com', '2021-05-19 14:38:54', NULL, NULL, NULL, 1, NULL, NULL, NULL, '2022-11-21 01:55:19', '2022-11-21 01:55:19', '102842857868709120320');
-
 -- --------------------------------------------------------
 
 --

@@ -61,7 +61,7 @@
                                             <td>{{ number_format($item->ie_number)}}</td>
                                             <td>{{ number_format($item->ie_total_money,0,',','.') }} VNĐ</td>
                                             <td>{{ $item['daban'] }} / {{ $item->ie_number }}</td>
-                                            <td>{{ number_format(($item['giaban'] * $item['daban']) - ($item->ie_money * $item['daban']),0,',','.') }}</td>
+                                            <td>{{ number_format((collect($item['order'])->sum('od_price')) - ($item->ie_money * $item['daban']),0,',','.') }}</td>
                                             <td>{{ $item->created_at ? date('d-m-Y',strtotime($item->created_at)) : '' }}</td>
                                             <td>{{ $item->NgaySX ? date('d-m-Y',strtotime($item->NgaySX)) : '' }}</td>
                                             <td>{{ $item->Hansudung ? date('d-m-Y',strtotime($item->Hansudung)) : '' }}</td>

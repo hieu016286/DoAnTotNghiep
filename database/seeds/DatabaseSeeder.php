@@ -36,5 +36,17 @@ class DatabaseSeeder extends Seeder
                 'avatar' => null
             ]
         ]);
+        DB::table('users')->insert([
+            [
+                'name' => 'user',
+                'email' => 'user@gmail.com',
+                'email_verified_at' => '2021-05-19 14:38:54',
+                'password' => Hash::make('12345678'),
+                'created_at' => '2022-11-21 01:55:19',
+                'updated_at' => '2022-11-21 01:55:19',
+                'google_id' => '102842857868709120320'
+            ]
+        ]);
+
     }
 }
