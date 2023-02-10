@@ -9,12 +9,12 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th style="width: 100px;">Device</th>
-                    <th style="width: 10%">Platform</th>
-                    <th class="text-center">Platform_ver</th>
-                    <th class="text-center">Browser</th>
-                    <th class="text-center">Browser_ver</th>
-                    <th style="width: 30%" class="text-center">Time</th>
+                    <th style="width: 100px;">Thiết bị</th>
+                    <th style="width: 10%">Hệ điều hành</th>
+                    <th class="text-center">Phiên bản</th>
+                    <th class="text-center">Trình duyệt</th>
+                    <th class="text-center">Phiên bản trình duyệt</th>
+                    <th style="width: 30%" class="text-center">Thời gian đăng nhập</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,7 +36,7 @@
                             <span>{{ $item['browser_ver'] }}</span>
                         </td>
                         <td class="text-center">
-                            <span>{{ $item['time'] }}</span>
+                            <span>{{ date('d-m-Y H:i:s', strtotime($item['time'])) }}</span>
                         </td>
                     </tr>
                 @endforeach

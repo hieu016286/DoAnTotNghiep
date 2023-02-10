@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\InvoiceEntered;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\Cache;
@@ -40,7 +41,9 @@ class AdminInventoryController extends Controller
 	 */
 	public function getOutOfStock(Request $request)
 	{
-		$inventoryExport = Order::with('product');
+        $transactionsSuccess = Transaction::where('tst_status', 3)->pluck('id')->toArray();
+
+		$inventoryExport = Order::whereIn('od_transaction_id', $transactionsSuccess)->with('product');
         if ($request->time) {
             $time = $this->getStartEndTime($request->time, []);
             $inventoryExport->whereBetween('created_at', $time);

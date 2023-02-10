@@ -99,13 +99,13 @@
                                                         </li>
                                                         <li class="divider"></li>
                                                         <li>
-                                                            <a href="{{ route('admin.action.transaction',['process', $transaction->id]) }}" ><i class="fa fa-gears"></i> Đang bàn giao</a>
+                                                            <a class="{{ $transaction->tst_status == -1 || $transaction->tst_status == 3 ? 'block-hover' : '' }}" href="{{ $transaction->tst_status == -1 || $transaction->tst_status == 3 ? '#' : route('admin.action.transaction',['process', $transaction->id]) }}" ><i class="fa fa-gears"></i> Đang bàn giao</a>
                                                         </li>
                                                         <li>
-                                                            <a href="{{ route('admin.action.transaction',['success', $transaction->id]) }}" ><i class="fa fa-check"></i> Đã bàn giao</a>
+                                                            <a class="{{ $transaction->tst_status == -1 || $transaction->tst_status == 3 ? 'block-hover' : '' }}" href="{{ $transaction->tst_status == -1 || $transaction->tst_status == 3 ? '#' : route('admin.action.transaction',['success', $transaction->id]) }}" ><i class="fa fa-check"></i> Đã bàn giao</a>
                                                         </li>
                                                         <li>
-                                                            <a href="{{ route('admin.action.transaction',['cancel', $transaction->id]) }}" ><i class="fa fa-ban"></i> Huỷ</a>
+                                                            <a class="{{ $transaction->tst_status == -1 || $transaction->tst_status == 3 ? 'block-hover' : '' }}" href="{{ $transaction->tst_status == -1 || $transaction->tst_status == 3 ? '#' : route('admin.action.transaction',['cancel', $transaction->id]) }}" ><i class="fa fa-ban"></i> Huỷ</a>
                                                         </li>
 
                                                     </ul>

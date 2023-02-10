@@ -254,12 +254,11 @@ class ShoppingCartController extends Controller
     }
     //Show ket qua thanh toan
     public function result_payment(Request $request){
+        $data = session()->get('data');
+        $shopping = session()->get('shopping');
+        $subTotal = session()->get('subtotal');
+        $okk = Transaction::where('created_at',$data['created_at'])->firstOrFail();
         if($request->vnp_ResponseCode == '00') {
-
-            $data = session()->get('data');
-            $shopping = session()->get('shopping');
-            $subTotal = session()->get('subtotal');
-            $okk = Transaction::where('created_at',$data['created_at'])->firstOrFail();
             $okk->tst_type = 2;
             $okk->save();
             if(Auth::user()->email) {
@@ -268,15 +267,18 @@ class ShoppingCartController extends Controller
             session()->forget(['data', 'shopping', 'subtotal']);
             \Session::flash('toastr', [
                 'type'    => 'success',
-                'message' => 'Thanh Toán Thành Công'
+                'message' => 'Thanh toán thành công'
             ]);
             return redirect('/');
-        }
-        \Session::flash('toastr', [
-                'type'    => 'success',
+        } else {
+            $okk->delete();
+            Order::where('od_transaction_id', $okk->id)->delete();
+            \Session::flash('toastr', [
+                'type'    => 'error',
                 'message' => 'Thanh toán thất bại'
             ]);
 
-        return redirect('/');
+            return redirect('/');
+        }
     }
 }

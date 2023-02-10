@@ -50,12 +50,12 @@
                 <thead>
                     <tr>
                         <th scope="col">Mã đơn</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Tên đơn</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Thời gian tạo</th>
+                        <th scope="col">Trạng thái</th>
                         <th scope="col" style="text-align: center">Export</th>
-                        <th scope="col" style="text-align: center">Action</th>
+                        <th scope="col" style="text-align: center">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>

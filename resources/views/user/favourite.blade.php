@@ -12,12 +12,12 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Mã ĐH</th>
-                            <th class="w-25" scope="col">Name</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Avatar</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">#</th>
+                            <th scope="col">Mã yêu thích</th>
+                            <th class="w-25" scope="col">Tên</th>
+                            <th scope="col">Danh mục</th>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col">Giá tiền</th>
+                            <th style="text-align: center!important;" scope="col">Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
