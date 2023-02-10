@@ -1,9 +1,9 @@
 <div style="width: 100%;max-width: 600px;margin:0 auto">
     <div style="height: 55px;background: #3a2615;padding: 10px">
         <div style="width: 50%">
-            <a href="">
-                <img style="height: 55px" src="http://tranining.previewcode.net/images/icon/Logo.png">
-            </a>
+{{--            <a href="">--}}
+{{--                <img style="height: 55px" src="http://tranining.previewcode.net/images/icon/Logo.png">--}}
+{{--            </a>--}}
         </div>
         <div style="width: 50%"></div>
     </div>
@@ -12,11 +12,11 @@
         <div>
             @foreach($shopping as $key => $item)
                 <div style="border-bottom: 1px solid #dedede;padding-bottom: 10px;padding-top: 10px;">
-                    <div class="" style="width: 15%;float: left;">
-                        <a href="">
-                            <img style="max-width: 100%;width: 80px;height: 100px" src="http://tranining.previewcode.net{{ pare_url_file($item->options->image) }}">
-                        </a>
-                    </div>
+{{--                    <div class="" style="width: 15%;float: left;">--}}
+{{--                        <a href="">--}}
+{{--                            <img style="max-width: 100%;width: 80px;height: 100px" src="http://tranining.previewcode.net{{ pare_url_file($item->options->image) }}">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                     <div style="width: 80%;float: right;">
                         <h4 style="margin:10px 0">{{ $item->name }}</h4>
                         <p style="margin: 4px 0;font-size: 14px;">Giá: <span>{{  number_format($item->price,0,',','.') }} đ</span></p>
